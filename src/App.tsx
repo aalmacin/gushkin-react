@@ -1,20 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
-import LoginButton from 'authentication/LoginButton';
-import LogoutButton from 'authentication/LogoutButton';
-import Profile from 'authentication/Profile';
-import Button from 'complib/Button';
-import { useAuth0 } from '@auth0/auth0-react';
+import React, { Suspense } from 'react';
+import classes from './App.module.scss';
+import {
+  Switch, Route, BrowserRouter as Router,
+} from "react-router-dom";
+import MainNav from 'MainNav';
+import Loading from 'complib/Loading';
+import Helmet from 'react-helmet'
+
+const Main = React.lazy(() => import('./pages/main/Main'));
+const Home = React.lazy(() => import('./pages/home/Home'));
 
 function App() {
-  const { isAuthenticated } = useAuth0()
   return (
-    <div className="App">
-      <Profile />
-      {isAuthenticated ?
-        <LogoutButton /> :
-        <LoginButton />}
+    <div className={classes.App}>
+      <Helmet>
+        <title>Welcome to Gushkin</title>
+      </Helmet>
+      <Router>
+        <MainNav />
+        <Switch>
+          <Route path="/main">
+            <Suspense fallback={<Loading />}>
+              <Main />
+            </Suspense>
+          </Route>
+          <Route path="/">
+            <Suspense fallback={<Loading />}>
+              <Home />
+            </Suspense>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

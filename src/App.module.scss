@@ -1,0 +1,37 @@
+@import 'complib/variables.scss';
+@import 'complib/fonts.scss';
+
+
+html {
+  font-size: 10px;
+  font-family: Raleway;
+  color: getColor(black);
+  background-color: getColor(secondary);
+  background: linear-gradient(90deg, getColor(primary, tint-6) 15%, getColor(primary, tint-7) 100%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 3rem;
+
+  @media (max-width: 43rem) {
+    font-size: 2rem;
+  }
+}
+
+div,
+p,
+a {
+  font-size: 1.6rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  letter-spacing: .1rem;
+}
