@@ -18,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,9 +38,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.11.0",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
     "@storybook/cli": "^5.3.19",
+    "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -48,6 +54,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "babel-loader": "^8.1.0",
     "node-sass": "^4.14.1",
     "storybook-cartesian": "^2.1.1",
     "typescript": "~3.7.2"
