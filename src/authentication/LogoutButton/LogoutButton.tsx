@@ -6,7 +6,7 @@ import { ButtonType } from "complib/Button/Button";
 const LogoutButton: React.FC = () => {
   const { logout } = useAuth0();
 
-  return <Button onClick={() => logout()} type={ButtonType.error}>Log Out</Button>;
+  return <Button onClick={() => logout()} type={ButtonType.secondary} isSquare>Log Out</Button>;
 };
 
 export default LogoutButton;
