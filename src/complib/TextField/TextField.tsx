@@ -1,5 +1,5 @@
+import InputField from "complib/InputField";
 import React from "react";
-import InputField from "../InputField/InputField";
 
 interface TextFieldProps {
   label: string;

@@ -1,0 +1,134 @@
+@import "complib/variables.scss";
+
+.ActivityPage {
+  display: flex;
+  margin: 3rem auto;
+  flex-direction: row;
+
+  @media (max-width: 43rem) {
+    flex-direction: column;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  .ActivitiesSection {
+    flex: 9;
+    padding-right: 3rem;
+
+    @media (max-width: 43rem) {
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .ShowStreakToggle {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1rem;
+      cursor: pointer;
+
+      .StreakToggler {
+        text-decoration: underline;
+      }
+
+      .Close {
+        color: getColor(red);
+      }
+    }
+
+    .ActivityList {
+      display: flex;
+      flex-direction: column;
+
+      .Activity {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px dotted getColor(error, tint-7);
+        padding-bottom: 1rem;
+
+        .ActivityAction {
+          font-size: 2rem;
+          list-style-type: none;
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+          justify-content: space-between;
+
+          &:not(:last-child) {
+            margin-bottom: 1rem;
+          }
+
+          .ActivityText {
+            flex: 4;
+
+            @media (max-width: 43rem) {
+              flex: 2;
+              font-size: 1.5rem;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  .ActivityDetailsSection {
+    flex: 3;
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+
+    border-left: 1px solid getColor(secondary, tint-7);
+
+    @media (max-width: 43rem) {
+      border: none;
+      padding: 0;
+    }
+
+    @media (max-width: 43rem) {
+      margin-top: 4rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+
+      .Icon {
+        margin-right: 1rem;
+      }
+    }
+
+    .Funds {
+      margin-bottom: 5rem;
+    }
+
+
+    .FundChange {
+      margin-top: 1rem;
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .TotalPrice {
+      margin-bottom: 3rem;
+
+      .Description {
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+
+      .Money {
+        margin-bottom: 2rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.Heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
