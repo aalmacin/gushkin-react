@@ -1,0 +1,18 @@
+@import "../variables.scss";
+
+.InputField {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-bottom: 1px solid getColor(primary, shade-8);
+
+  label {
+    font-size: 2rem;
+  }
+
+  input {
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 2rem;
+  }
+}

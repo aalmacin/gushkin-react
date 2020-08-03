@@ -1,0 +1,158 @@
+$colors: (primary: (base: #71d998,
+    shade-1: #65c388,
+    shade-2: #5aad79,
+    shade-3: #4f976a,
+    shade-4: #43825b,
+    shade-5: #386c4c,
+    shade-6: #2d563c,
+    shade-7: #21412d,
+    shade-8: #162b1e,
+    shade-9: #0b150f,
+    tint-1: #7fdca2,
+    tint-2: #8de0ac,
+    tint-3: #9be4b6,
+    tint-4: #a9e8c1,
+    tint-5: #b8eccb,
+    tint-6: #c6efd5,
+    tint-7: #d4f3e0,
+    tint-8: #e2f7ea,
+    tint-9: #f0fbf4,
+  ),
+  secondary: (base: #8cf0e4,
+    shade-1: #7ed8cd,
+    shade-2: #70c0b6,
+    shade-3: #62a89f,
+    shade-4: #549088,
+    shade-5: #467872,
+    shade-6: #38605b,
+    shade-7: #2a4844,
+    shade-8: #1c302d,
+    shade-9: #0e1816,
+    tint-1: #97f1e6,
+    tint-2: #a3f3e9,
+    tint-3: #aef4ec,
+    tint-4: #baf6ee,
+    tint-5: #c5f7f1,
+    tint-6: #d1f9f4,
+    tint-7: #dcfaf6,
+    tint-8: #e8fcf9,
+    tint-9: #f3fdfc,
+  ),
+  error: (base: #8c322d,
+    shade-1: #7e2d28,
+    shade-2: #702824,
+    shade-3: #62231f,
+    shade-4: #541e1b,
+    shade-5: #461916,
+    shade-6: #381412,
+    shade-7: #2a0f0d,
+    shade-8: #1c0a09,
+    shade-9: #0e0504,
+    tint-1: #974642,
+    tint-2: #a35a56,
+    tint-3: #ae6f6c,
+    tint-4: #ba8481,
+    tint-5: #c59896,
+    tint-6: #d1adab,
+    tint-7: #dcc1c0,
+    tint-8: #e8d6d5,
+    tint-9: #f3eaea,
+  ),
+  gold: (base: #C3A500,
+
+    light-variant-2: #FFD700,
+    light-variant-1: #F2CC00,
+
+    dark-variant-1: #988000,
+    dark-variant-2: #665600,
+
+    tint-1: #c9ae19,
+    tint-2: #cfb732,
+    tint-3: #d5c04c,
+    tint-4: #dbc966,
+    tint-5: #e1d27f,
+    tint-6: #e7db99,
+    tint-7: #ede4b2,
+    tint-8: #f3edcc,
+    tint-9: #f9f6e5,
+
+    shade-1: #af9400,
+    shade-2: #9c8400,
+    shade-3: #887300,
+    shade-4: #756300,
+    shade-5: #615200,
+    shade-6: #4e4200,
+    shade-7: #3a3100,
+    shade-8: #272100,
+    shade-9: #131000,
+  ),
+  black: (base: #10150e),
+  white: (base: #f6fbf4, light: #ffffff),
+  gray: (base: #d9d9d9,
+    shade-1: #c3c3c3,
+    shade-2: #adadad,
+    shade-3: #979797,
+    shade-4: #828282,
+    shade-5: #6c6c6c,
+    shade-6: #565656,
+    shade-7: #414141,
+    shade-8: #2b2b2b,
+    shade-9: #151515,
+
+    tint-1: #dcdcdc,
+    tint-2: #e0e0e0,
+    tint-3: #e4e4e4,
+    tint-4: #e8e8e8,
+    tint-5: #ececec,
+    tint-6: #efefef,
+    tint-7: #f3f3f3,
+    tint-8: #f7f7f7,
+    tint-9: #fbfbfb),
+  red: (base: #d97671,
+    shade-1: #c36a65,
+    shade-2: #ad5e5a,
+    shade-3: #97524f,
+    shade-4: #824643,
+    shade-5: #6c3b38,
+    shade-6: #562f2d,
+    shade-7: #412321,
+    shade-8: #2b1716,
+    shade-9: #150b0b,
+
+    tint-1: #dc837f,
+    tint-2: #e0918d,
+    tint-3: #e49f9b,
+    tint-4: #e8aca9,
+    tint-5: #ecbab8,
+    tint-6: #efc8c6,
+    tint-7: #f3d5d4,
+    tint-8: #f7e3e2,
+    tint-9: #fbf1f0,
+
+  ));
+
+@function secureMapGet($map, $key) {
+  $item: map-get($map, $key);
+
+  @if(type-of($item)=='null') {
+    @error 'Invalid type';
+  }
+
+  @return $item;
+}
+
+@function getColor($type: primary, $level: base) {
+  $colorList: secureMapGet($map: $colors, $key: $type);
+  $color: secureMapGet($colorList, $level);
+
+  @return $color;
+}
+
+@mixin unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
