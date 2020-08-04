@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client"
+import { gql } from "@apollo/react-hooks"
 
-const GetActivities = gql`
+export const GetActivities = gql`
   query GetActivities {
     activities {
       id
@@ -20,7 +20,3 @@ const GetActivities = gql`
     }
   }
 `
-
-export function getActivities() {
-  console.log('Get Activities', GetActivities)
-}

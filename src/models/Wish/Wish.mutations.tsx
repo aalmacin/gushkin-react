@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"
+import { gql } from "@apollo/react-hooks"
 import { CreateWishInput } from "./Wish.types"
 
 const CreateWish = gql`

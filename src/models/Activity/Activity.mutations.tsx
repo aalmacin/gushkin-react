@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"
+import { gql } from "@apollo/react-hooks"
 import { ActivityInput } from "./Activity.types"
 
 const CreateActivity = gql`

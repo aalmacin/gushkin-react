@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client"
+import { gql } from "@apollo/react-hooks"
 
-const GetWishes = gql`
+export const GetWishes = gql`
   query GetWishes {
     wishes {
       id
@@ -12,7 +12,3 @@ const GetWishes = gql`
     }
   }
 `
-
-export function getWishes() {
-  console.log('Get Wishes', GetWishes)
-}
