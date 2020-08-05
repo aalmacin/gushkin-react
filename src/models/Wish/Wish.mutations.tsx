@@ -1,7 +1,6 @@
 import { gql } from "@apollo/react-hooks"
-import { CreateWishInput } from "./Wish.types"
 
-const CreateWish = gql`
+export const CreateWish = gql`
   mutation CreateWish($price: Int!, $description: String!, $priority: Priority!, $status: Status!, $source: String) {
     createWish(input: {
       price: $price
@@ -19,10 +18,6 @@ const CreateWish = gql`
     }
   }
 `
-
-export function createWish(input: CreateWishInput) {
-  console.log("Create Wish", CreateWish, input)
-}
 
 const UpdateWish = gql`
   mutation UpdateWish($id: Int!, $price: Int, $description: String, $priority: Priority, $status: Status, $source: String) {
