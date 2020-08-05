@@ -5,18 +5,21 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Auth0Provider } from '@auth0/auth0-react';
 import config from "./auth_config.json";
-
+import { ApolloProvider } from '@apollo/client';
+import { apolloClient } from 'apollo-client';
 
 ReactDOM.render(
-  <Auth0Provider
-    domain={config.domain}
-    clientId={config.clientId}
-    audience={config.audience}
-    redirectUri={window.location.origin}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Auth0Provider>
+  <ApolloProvider client={apolloClient}>
+    <Auth0Provider
+      domain={config.domain}
+      clientId={config.clientId}
+      audience={config.audience}
+      redirectUri={window.location.origin}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Auth0Provider>
+  </ApolloProvider>
   , document.getElementById('root')
 );
 

@@ -6,9 +6,10 @@ import TextField from "complib/TextField";
 import NumberField from "complib/NumberField";
 import FormClose from "pages/main/shared/FormClose";
 import Loading from "complib/Loading";
-import { createActivity } from "models/Activity/Activity.mutations";
+import { CreateActivity } from "models/Activity/Activity.mutations";
 import { ActivityInput } from "models/Activity/Activity.types";
 import ErrorList from "pages/error";
+import { useMutation } from "@apollo/react-hooks";
 
 
 interface ActivityFormProps {
@@ -16,6 +17,7 @@ interface ActivityFormProps {
 }
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
+  const [createActivity] = useMutation(CreateActivity)
   const initialFormState = {
     description: "",
     fundAmt: 0,
@@ -67,8 +69,10 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
     if (errorList.length === 0) {
       const fundAmt = parseFloat(`${activity.fundAmt}`) * MICRO_AMOUNT;
       createActivity({
-        ...activity,
-        fundAmt
+        variables: {
+          ...activity,
+          fundAmt
+        }
       })
 
       setActivity({ ...initialFormState });

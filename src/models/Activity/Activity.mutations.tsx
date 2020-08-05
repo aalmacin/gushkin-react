@@ -1,8 +1,8 @@
 import { gql } from "@apollo/react-hooks"
 import { ActivityInput } from "./Activity.types"
 
-const CreateActivity = gql`
-  mutation CreateActivity($description: String!, $fundAmt: Int!, $positive: Bool!) {
+export const CreateActivity = gql`
+  mutation CreateActivity($description: String!, $fundAmt: Int!, $positive: Boolean!) {
     createActivity(input: {
       description: $description
       fundAmt: $fundAmt
@@ -15,7 +15,3 @@ const CreateActivity = gql`
     }
   }
 `
-
-export function createActivity(activity: ActivityInput) {
-  console.log("Create Activity", CreateActivity, activity)
-}

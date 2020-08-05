@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Store.module.scss";
 
 
@@ -21,11 +21,20 @@ import { displayNormalMoney } from "functions/utils.functions";
 import FormClose from "pages/main/shared/FormClose";
 import Funds from "pages/main/shared/Funds";
 import HeaderIcon from "pages/main/shared/HeaderIcon";
+import { useQuery } from "@apollo/react-hooks";
+import { GetWishes } from "models/Wish/Wish.queries";
 
 function Store() {
   const [isShowForm, setIsShowForm] = useState(false);
+  const { data } = useQuery(GetWishes)
+  const [storeItems, setStoreItems] = useState<any[]>([])
+
+  useEffect(() => {
+    if (data) {
+      setStoreItems(data.wishes)
+    }
+  }, [data])
   const cartItems: Wish[] = []
-  const storeItems: Wish[] = []
   const isWishesLoaded = true
   const cartTotal = 0
 
