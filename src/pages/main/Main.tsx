@@ -5,6 +5,7 @@ import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 
 import Loading from 'complib/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
+import { GetActivitiesProvider } from 'models/Activity/GetActivities.provider';
 
 const Store = React.lazy(() => import('./store/Store'));
 const BoughtItems = React.lazy(() => import('./bought-items/BoughtItems'));
@@ -12,8 +13,8 @@ const Activities = React.lazy(() => import('./activities/Activities'));
 
 function Main() {
   const match = useRouteMatch();
-  const { isAuthenticated } = useAuth0()
-  if (!isAuthenticated) {
+  const { isAuthenticated, isLoading } = useAuth0()
+  if (!isLoading && !isAuthenticated) {
     return <Redirect to="/" />
   }
 
@@ -32,7 +33,9 @@ function Main() {
         </Route>
         <Route path={`${match.path}`}>
           <Suspense fallback={<Loading />}>
-            <Activities />
+            <GetActivitiesProvider>
+              <Activities />
+            </GetActivitiesProvider>
           </Suspense>
         </Route>
       </Switch>

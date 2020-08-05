@@ -1,6 +1,6 @@
 import { performActivity } from "models/Action/Action.mutations";
 import classes from './Activities.module.scss'
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   faPlus,
   faMinus,
@@ -20,19 +20,11 @@ import ActivityForm from "./activity-form";
 import Streaks from "./streaks";
 import TodaysActivities from "./TodaysActivities";
 import { Activity } from "models/Activity/Activity.types";
-import { GetActivities } from "models/Activity/Activity.queries";
-import { useQuery } from "@apollo/react-hooks";
+import { useGetActivities } from "models/Activity/useGetActivities";
 
 function Activities() {
-  const { data } = useQuery(GetActivities)
+  const { activities, loading } = useGetActivities()
 
-  const [activities, setActivities] = useState<any[]>([])
-
-  useEffect(() => {
-    if (data) {
-      setActivities(data.activities)
-    }
-  }, [data])
   const [isShowActivityForm, setShowActivityForm] = useState(false);
   const [isShowStreak, setIsShowStreak] = useState(false);
 
@@ -63,6 +55,10 @@ function Activities() {
 
   const getActivityStreaks = (id: any) => {
     return activityStreaks.find(t => `${t.activityId}` === `${id}`)?.days || []
+  }
+
+  if (loading) {
+    return <Loading />
   }
 
   return (

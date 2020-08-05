@@ -17,7 +17,7 @@
   justify-content: space-between;
   padding: 1rem;
   background-color: getColor(white, light);
-  box-shadow: 1.2rem 1rem 5rem -.1rem getColor(secondary, shade-4);
+  box-shadow: 0 0 9rem 0 getColor(secondary, shade-3);
 
   @media (max-width: 43rem) {
     flex-wrap: wrap;

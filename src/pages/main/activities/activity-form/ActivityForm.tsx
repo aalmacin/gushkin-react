@@ -10,6 +10,7 @@ import { CreateActivity } from "models/Activity/Activity.mutations";
 import { ActivityInput } from "models/Activity/Activity.types";
 import ErrorList from "pages/error";
 import { useMutation } from "@apollo/react-hooks";
+import { useGetActivities } from "models/Activity/useGetActivities";
 
 
 interface ActivityFormProps {
@@ -17,7 +18,13 @@ interface ActivityFormProps {
 }
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
-  const [createActivity] = useMutation(CreateActivity)
+  const { refetch } = useGetActivities()
+  const [createActivity] = useMutation(CreateActivity, {
+    onCompleted: () => {
+      refetch()
+      closeHandler()
+    }
+  })
   const initialFormState = {
     description: "",
     fundAmt: 0,
@@ -72,7 +79,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
         variables: {
           ...activity,
           fundAmt
-        }
+        },
       })
 
       setActivity({ ...initialFormState });
