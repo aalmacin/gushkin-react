@@ -1,7 +1,6 @@
 import { gql } from "@apollo/react-hooks"
-import { PerformActivityInput } from "./Action.types"
 
-const PerformActivity = gql`
+export const PerformActivity = gql`
   mutation PerformActivity($activityId: Int!) {
     performActivity(input: {activityId: $activityId}) {
         id
@@ -15,7 +14,3 @@ const PerformActivity = gql`
     }
   }
 `
-
-export function performActivity(input: PerformActivityInput) {
-  console.log("Perform Activity", PerformActivity, input)
-}

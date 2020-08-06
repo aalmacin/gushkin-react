@@ -1,8 +1,12 @@
 import { gql } from "@apollo/react-hooks"
 
-const Actions = gql`
-  query Actions {
-    actions {
+export interface GetActionInput {
+  today: boolean
+}
+
+export const GetActions = gql`
+  query Actions($input: $GetActionInput) {
+    actions(input: $input) {
         id
         actionTimestamp
         activity {
@@ -14,7 +18,3 @@ const Actions = gql`
     }
   }
 `
-
-export function getActions() {
-  console.log('Get Actions', Actions)
-}
