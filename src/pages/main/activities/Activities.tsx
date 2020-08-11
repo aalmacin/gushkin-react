@@ -22,13 +22,19 @@ import TodaysActivities from "./TodaysActivities";
 import { Activity } from "models/Activity/Activity.types";
 import { useGetActivities } from "models/Activity/useGetActivities";
 import { useMutation } from "@apollo/client";
+import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 
 function Activities() {
   const { activities, loading: activitiesLoading } = useGetActivities()
 
   const [isShowActivityForm, setShowActivityForm] = useState(false);
   const [isShowStreak, setIsShowStreak] = useState(false);
-  const [performActivity] = useMutation(PerformActivity)
+  const { refetch: refetchTodaysActions } = useGetTodaysActions()
+  const [performActivity] = useMutation(PerformActivity, {
+    onCompleted: () => {
+      refetchTodaysActions()
+    }
+  })
 
   // TODO: Add real pull
   const activityStreaks: any[] = []
