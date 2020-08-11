@@ -24,9 +24,7 @@ function Main() {
       <Switch>
         <Route path={`${match.path}/store`}>
           <Suspense fallback={<Loading />}>
-            <GetWishesProvider>
-              <Store />
-            </GetWishesProvider>
+            <Store />
           </Suspense>
         </Route>
         <Route path={`${match.path}/history`}>
@@ -36,9 +34,7 @@ function Main() {
         </Route>
         <Route path={`${match.path}`}>
           <Suspense fallback={<Loading />}>
-            <GetActivitiesProvider>
-              <Activities />
-            </GetActivitiesProvider>
+            <Activities />
           </Suspense>
         </Route>
       </Switch>

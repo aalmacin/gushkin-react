@@ -1,19 +1,23 @@
 import React from "react";
 import { faListAlt } from "@fortawesome/free-solid-svg-icons";
 import Loading from "complib/Loading";
-import { convertEpochToHour, displayNormalMoney, getNumberFromMicroAmount } from "functions/utils.functions";
+import { displayNormalMoney, getNumberFromMicroAmount } from "functions/utils.functions";
 import HeaderIcon from "pages/main/shared/HeaderIcon";
 import classes from "./TodaysActivities.module.scss";
+import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
+import moment from 'moment-timezone';
 
+// TODO: Create super provider
 function TodaysActivities() {
+  const { actions: todaysActions, loading: todaysActionsLoading } = useGetTodaysActions()
   // TODO
-  const todaysActivities: any[] = []
-  const isTodaysActivitiesLoaded = false
+  console.log(todaysActions, todaysActionsLoading)
   const totalFundChanges = 0
 
-  if (!isTodaysActivitiesLoaded) {
+  if (todaysActionsLoading) {
     return <Loading />
   }
+
 
   return (
     <div className={classes.TodaysActivities}>
@@ -25,11 +29,11 @@ function TodaysActivities() {
           <span>Activity</span>
           <span className={classes.Value}>Amount</span>
         </li>
-        {todaysActivities.map(todayActivity =>
-          <li key={todayActivity.timestamp} className={classes.ActivityHistoryItem}>
-            <span className={classes.Time}>{convertEpochToHour(todayActivity.timestamp)}</span>
-            <span>{todayActivity.description}</span>
-            <span className={`${classes.Value} ${todayActivity.positive ? classes.PositiveVal : classes.NegativeVal}`}>{`${todayActivity.positive ? '+' : '-'} $${displayNormalMoney(todayActivity.fundAmt)}`}</span>
+        {todaysActions.map(todayAction =>
+          <li key={todayAction.id}>
+            <span className={classes.Time}>{moment(todayAction.actionTimestamp).format("HH:mm")}</span>
+            <span>{todayAction.activity.description}</span>
+            <span className={`${classes.Value} ${todayAction.activity.positive ? classes.PositiveVal : classes.NegativeVal}`}>{`${todayAction.activity.positive ? '+' : '-'} $${displayNormalMoney(todayAction.activity.fundAmt)}`}</span>
           </li>
         )}
       </ul>

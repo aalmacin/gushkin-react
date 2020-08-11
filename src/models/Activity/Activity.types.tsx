@@ -17,5 +17,5 @@ export interface ActivityToday {
   readonly description: string,
   readonly fundAmt: number,
   readonly positive: boolean,
-  readonly timestamp: number
+  readonly actionTimestamp: number
 }

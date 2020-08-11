@@ -1,4 +1,4 @@
-import { performActivity } from "models/Action/Action.mutations";
+import { PerformActivity } from "models/Action/Action.mutations";
 import classes from './Activities.module.scss'
 import React, { useState } from "react";
 import {
@@ -21,12 +21,14 @@ import Streaks from "./streaks";
 import TodaysActivities from "./TodaysActivities";
 import { Activity } from "models/Activity/Activity.types";
 import { useGetActivities } from "models/Activity/useGetActivities";
+import { useMutation } from "@apollo/client";
 
 function Activities() {
-  const { activities, loading } = useGetActivities()
+  const { activities, loading: activitiesLoading } = useGetActivities()
 
   const [isShowActivityForm, setShowActivityForm] = useState(false);
   const [isShowStreak, setIsShowStreak] = useState(false);
+  const [performActivity] = useMutation(PerformActivity)
 
   // TODO: Add real pull
   const activityStreaks: any[] = []
@@ -37,7 +39,9 @@ function Activities() {
 
   const addActivity = (activityId: string) => () => {
     performActivity({
-      activityId: parseInt(`${activityId}`)
+      variables: {
+        activityId: parseInt(`${activityId}`)
+      }
     })
   };
 
@@ -57,7 +61,7 @@ function Activities() {
     return activityStreaks.find(t => `${t.activityId}` === `${id}`)?.days || []
   }
 
-  if (loading) {
+  if (activitiesLoading) {
     return <Loading />
   }
 

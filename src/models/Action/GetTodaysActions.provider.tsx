@@ -13,7 +13,7 @@ export const GetTodaysActionsContext = createContext<GetTodaysActionsContextValu
 
 export const GetTodaysActionsProvider: React.FC = ({ children }) => {
   const { data, refetch, loading, error } = useQuery(GetActions, {
-    variables: { today: true }
+    variables: { input: { today: true } }
   })
   const actions = (data && data.actions) || []
 

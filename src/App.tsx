@@ -7,6 +7,7 @@ import MainNav from 'MainNav';
 import Loading from 'complib/Loading';
 import Helmet from 'react-helmet'
 import { useAuth0 } from '@auth0/auth0-react';
+import { ModelProvider } from 'models/ModelProvider';
 
 const Main = React.lazy(() => import('./pages/main/Main'));
 const Home = React.lazy(() => import('./pages/home/Home'));
@@ -30,7 +31,9 @@ function App() {
         <Switch>
           <Route path="/main">
             <Suspense fallback={<Loading />}>
-              <Main />
+              <ModelProvider>
+                <Main />
+              </ModelProvider>
             </Suspense>
           </Route>
           <Route path="/">
