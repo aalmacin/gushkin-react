@@ -5,7 +5,7 @@ export interface GetActionInput {
 }
 
 export const GetActions = gql`
-  query Actions($input: $GetActionInput) {
+  query Actions($input: GetActionInput) {
     actions(input: $input) {
         id
         actionTimestamp
