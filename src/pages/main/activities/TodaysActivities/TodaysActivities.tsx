@@ -16,10 +16,8 @@ const getTotalFundChanges = (actions: Action[]) => {
   }, 0)
 }
 
-// TODO: Create super provider
 function TodaysActivities() {
   const { actions: todaysActions, loading: todaysActionsLoading } = useGetTodaysActions()
-  // TODO
   const totalFundChanges = useMemo(() => getTotalFundChanges(todaysActions), [todaysActions])
 
   if (todaysActionsLoading) {

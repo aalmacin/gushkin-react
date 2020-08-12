@@ -25,10 +25,9 @@ import { useGetWishes } from "models/Wish/useGetWishes";
 
 function Store() {
   const [isShowForm, setIsShowForm] = useState(false);
-  const { wishes: storeItems } = useGetWishes()
+  const { wishes: storeItems, loading } = useGetWishes()
 
   const cartItems: Wish[] = []
-  const isWishesLoaded = true
   const cartTotal = 0
 
   const isItemInCart = (item: Wish) =>
@@ -73,7 +72,7 @@ function Store() {
             />
           </div>
         </div>
-        {isWishesLoaded ? (
+        {!loading ? (
           <>
             <div className={classes.StoreItemList}>
               {storeItems.map((wish: Wish) => (
