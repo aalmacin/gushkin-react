@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import classes from './App.module.scss';
 import {
   Switch, Route, BrowserRouter as Router,
