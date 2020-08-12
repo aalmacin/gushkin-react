@@ -22,13 +22,12 @@ import FormClose from "pages/main/shared/FormClose";
 import Funds from "pages/main/shared/Funds";
 import HeaderIcon from "pages/main/shared/HeaderIcon";
 import { useGetWishes } from "models/Wish/useGetWishes";
+import { useCart } from "models/Cart/useCart";
 
 function Store() {
   const [isShowForm, setIsShowForm] = useState(false);
   const { wishes: storeItems, loading } = useGetWishes()
-
-  const cartItems: Wish[] = []
-  const cartTotal = 0
+  const { wishes: cartItems, addToCart, removeFromCart, cartTotal } = useCart()
 
   const isItemInCart = (item: Wish) =>
     cartItems.find(cartItem => cartItem.id === item.id);
@@ -37,12 +36,12 @@ function Store() {
     setIsShowForm(!isShowForm);
   };
 
-  const addToCart = (wish: Wish) => () => {
-    // addItemToCart(wish);
+  const addItemToCart = (wish: Wish) => () => {
+    addToCart(wish);
   };
 
-  const removeFromCart = (wish: Wish) => () => {
-    // removeItemFromCart(wish.id);
+  const removeItemFromCart = (wish: Wish) => () => {
+    removeFromCart(wish.id);
   };
 
   const checkout = () => {
@@ -81,8 +80,8 @@ function Store() {
                   key={wish.id}
                   onClick={
                     isItemInCart(wish)
-                      ? removeFromCart(wish)
-                      : addToCart(wish)
+                      ? removeItemFromCart(wish)
+                      : addItemToCart(wish)
                   }
                 >
                   <div className={classes.Description}>

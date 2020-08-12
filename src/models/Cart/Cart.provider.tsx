@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 import { Wish } from "models/Wish/Wish.types";
 
 type AddToCartAction = {
@@ -13,11 +13,11 @@ type RemoveFromCartAction = {
 
 type CartState = Wish[]
 type CartActions = AddToCartAction | RemoveFromCartAction
-type CartContextValues = { wishes: Wish[], addToCart: (wish: Wish) => void, removeFromCart: (id: string) => void }
+type CartContextValues = { wishes: Wish[], addToCart: (wish: Wish) => void, removeFromCart: (id: string) => void, cartTotal: number }
 
 const noop = () => { }
 
-export const CartContext = createContext<CartContextValues>({ wishes: [], addToCart: noop, removeFromCart: noop })
+export const CartContext = createContext<CartContextValues>({ wishes: [], addToCart: noop, removeFromCart: noop, cartTotal: 0 })
 
 type CartReducer = (prevState: CartState, action: CartActions) => CartState
 
@@ -48,7 +48,11 @@ export const CartProvider: React.FC = ({ children }) => {
     dispatch(removeFromCartAction(id))
   }
 
-  return <CartContext.Provider value={{ wishes: state, addToCart, removeFromCart }}>
+  const wishes = state
+
+  const cartTotal = wishes.reduce((acc, curr) => acc + curr.price, 0)
+
+  return <CartContext.Provider value={{ wishes, addToCart, removeFromCart, cartTotal }}>
     {children}
   </CartContext.Provider>
 }
