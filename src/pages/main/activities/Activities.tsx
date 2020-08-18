@@ -23,6 +23,7 @@ import { Activity } from "models/Activity/Activity.types";
 import { useGetActivities } from "models/Activity/useGetActivities";
 import { useMutation } from "@apollo/client";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
+import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 
 function Activities() {
   const { activities, loading: activitiesLoading } = useGetActivities()
@@ -30,9 +31,11 @@ function Activities() {
   const [isShowActivityForm, setShowActivityForm] = useState(false);
   const [isShowStreak, setIsShowStreak] = useState(false);
   const { refetch: refetchTodaysActions } = useGetTodaysActions()
+  const { refetch: refetchCurrentFunds } = useGetCurrentFunds()
   const [performActivity] = useMutation(PerformActivity, {
     onCompleted: () => {
       refetchTodaysActions()
+      refetchCurrentFunds()
     }
   })
 
