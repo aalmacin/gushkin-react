@@ -1,106 +1,42 @@
-@import 'complib/variables.scss';
-
-.Toggle {
-  display: none;
-
-  @media (max-width: 43rem) {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 2rem;
-    flex-basis: 20%;
-  }
-}
-
 .MainNav {
+  background: #667387;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  background-color: getColor(white, light);
-  box-shadow: 0 0 9rem 0 getColor(secondary, shade-3);
+  align-items: center;
+  padding: 16px 36px;
 
-  @media (max-width: 43rem) {
-    flex-wrap: wrap;
+  .Logo {
+    font-family: Rambla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 61px;
+    text-transform: uppercase;
+
+    color: #21262D;
   }
 
-  .LogoSection {
-    flex: 1;
-    margin-right: 1rem;
-    border-right: 1px solid getColor(secondary, tint-7);
-    text-align: center;
-
-    @media (max-width: 43rem) {
-      flex: 0;
-      flex-shrink: 2;
-    }
+  .SignIn {
+    font-family: Ramabhadra;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 46px;
+    /* identical to box height */
 
 
-    .Logo {
-      padding: 1rem;
-
-      img {
-        max-width: 6rem;
-        max-height: 6rem;
-        display: inline-block;
-      }
-    }
+    color: #21262D;
   }
 
-  .LinkList {
-    display: flex;
-    flex: 10;
+  .SignOut {
+    font-family: Ramabhadra;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 46px;
+    /* identical to box height */
 
 
-
-    .LinkListItem {
-      list-style-type: none;
-      text-transform: uppercase;
-
-
-      &:not(:last-child) {
-        margin-right: 2rem;
-      }
-    }
-
-    @media (max-width: 43rem) {
-      justify-content: center;
-      align-items: flex-end;
-      flex-direction: column;
-      flex-basis: 100%;
-      padding: 1rem 0;
-
-
-      &.IsShow {
-        transition: all 500ms;
-        height: 100%;
-      }
-
-      &.IsNotShow {
-        height: 0;
-        overflow: hidden;
-        padding: 0;
-      }
-
-      .LinkListItem {
-        margin: 0;
-        padding: 0;
-        margin-right: 1rem;
-        text-align: right;
-
-        &:not(:last-child) {
-          margin-right: 1rem;
-          margin-bottom: 2rem;
-        }
-      }
-    }
-  }
-
-}
-
-.ProfileSection {
-  flex: 2;
-
-  @media (max-width: 43rem) {
-    display: none;
+    color: #21262D;
   }
 }

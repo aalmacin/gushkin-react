@@ -8,6 +8,7 @@ import Loading from 'complib/Loading';
 import Helmet from 'react-helmet'
 import { useAuth0 } from '@auth0/auth0-react';
 import { ModelProvider } from 'models/ModelProvider';
+import SideNav from 'SideNav';
 
 const Main = React.lazy(() => import('./pages/main/Main'));
 const Home = React.lazy(() => import('./pages/home/Home'));
@@ -28,22 +29,27 @@ function App() {
       </Helmet>
       <Router>
         <MainNav />
-        <Switch>
-          <Route path="/main">
-            <Suspense fallback={<Loading />}>
-              <ModelProvider>
-                <Main />
-              </ModelProvider>
-            </Suspense>
-          </Route>
-          <Route path="/">
-            <Suspense fallback={<Loading />}>
-              <Home />
-            </Suspense>
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+        <div className={classes.Content}>
+          <SideNav />
+          <div className={classes.Page}>
+            <Switch>
+              <Route path="/main">
+                <Suspense fallback={<Loading />}>
+                  <ModelProvider>
+                    <Main />
+                  </ModelProvider>
+                </Suspense>
+              </Route>
+              <Route path="/">
+                <Suspense fallback={<Loading />}>
+                  <Home />
+                </Suspense>
+              </Route>
+            </Switch>
+          </div>
+        </div>
+      </Router >
+    </div >
   );
 }
 

@@ -6,8 +6,9 @@ html {
   font-size: 10px;
   font-family: Raleway;
   color: getColor(black);
-  background-color: getColor(secondary, tint-9);
-  background: linear-gradient(90deg, getColor(secondary, tint-8) 15%, getColor(secondary, tint-9) 100%);
+  // background-color: getColor(secondary, tint-9);
+  // background: linear-gradient(90deg, getColor(secondary, tint-8) 15%, getColor(secondary, tint-9) 100%);
+  background: rgba(102, 117, 135, 0.13);
 }
 
 h1,
@@ -34,4 +35,14 @@ a {
   margin: 0;
   box-sizing: border-box;
   letter-spacing: .1rem;
+}
+
+.Content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .Page {
+    flex-grow: 1;
+  }
 }
