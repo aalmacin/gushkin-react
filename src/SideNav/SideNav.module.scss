@@ -10,17 +10,18 @@
       margin: 16px 0;
 
       a {
-        font-family: Ramabhadra;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 32px;
+        font-family: Raleway;
+        font-weight: bold;
+        font-size: 28px;
         color: #767676;
         text-decoration: none;
       }
     }
 
     .Active {
-      background-color: #9ABFC1;
+      a {
+        color: #404855;
+      }
     }
   }
 }
