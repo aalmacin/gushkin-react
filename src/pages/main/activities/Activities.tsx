@@ -75,7 +75,6 @@ function Activities() {
   }
 
   return (
-    
     // <div className={classes.ActivityPage}>
     //   <div className={classes.ActivitiesSection}>
     //     {isShowActivityForm && (
@@ -149,7 +148,7 @@ function Activities() {
     //     <TodaysActivities />
     //   </div>
     // </div>
-    <div>
+    <div className={classes.ActivityPage}>
       <div>
 
       </div>
