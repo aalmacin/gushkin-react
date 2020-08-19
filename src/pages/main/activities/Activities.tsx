@@ -75,77 +75,83 @@ function Activities() {
   }
 
   return (
-    <div className={classes.ActivityPage}>
-      <div className={classes.ActivitiesSection}>
-        {isShowActivityForm && (
-          <Modal>
-            <ActivityForm closeHandler={closeForm} />
-          </Modal>
-        )}
-        <div className={classes.Heading}>
-          <HeaderIcon icon={faRunning} text="Activities" />
-          <div>
-            <Button
-              onClick={showActivityForm}
-              type={ButtonType.primary}
-              icon={faPlus}
-            />
-          </div>
-        </div>
-        <div className={classes.ShowStreakToggle}>
-          <div className={classes.StreakToggler} onClick={toggleIsShowStreaks}>{!isShowStreak ? 'Show' : 'Hide'} Streaks {isShowStreak && <span className={classes.Close}><FontAwesomeIcon icon={faTimes} /></span>}</div>
-        </div>
-        {isActivitiesLoaded ? (
-          <ul className={classes.ActivityList}>
-            {activities.map((activity: Activity) => (
-              <li key={activity.id} className={classes.Activity}>
-                <div className={classes.Action}>
-                  {isActivitiesActionLoading ? <Loading /> : <Button
-                    isSquare
-                    type={activity.positive ? ButtonType.secondary : ButtonType.red}
-                    onClick={addActivity(activity.id)}
-                    icon={activity.positive ? faPlus : faMinus}
-                  >
-                    <span className={classes.ActivityAmt}>
-                      $ {displayNormalMoney(activity.fundAmt)}
-                    </span>
-                  </Button>
-                  }
-                  <span className={classes.ActivityText}>
-                    {activity.description}
-                  </span>
-                </div>
-                {isShowStreak && <Streaks activityStreaks={getActivityStreaks(activity.id)} positive={activity.positive} />}
-              </li>
-            ))}
-          </ul>
-        ) : (
-            <Loading isLoading />
-          )}
-      </div>
-      <div className={classes.ActivityDetailsSection}>
-        <div className={classes.Funds}>
-          <HeaderIcon icon={faCoins} text="Current Funds" />
-          <Funds />
-        </div>
-        <div className={classes.TotalPrice}>
-          <HeaderIcon icon={faDollarSign} text="Total Funds Needed" />
+    
+    // <div className={classes.ActivityPage}>
+    //   <div className={classes.ActivitiesSection}>
+    //     {isShowActivityForm && (
+    //       <Modal>
+    //         <ActivityForm closeHandler={closeForm} />
+    //       </Modal>
+    //     )}
+    //     <div className={classes.Heading}>
+    //       <HeaderIcon icon={faRunning} text="Activities" />
+    //       <div>
+    //         <Button
+    //           onClick={showActivityForm}
+    //           type={ButtonType.primary}
+    //           icon={faPlus}
+    //         />
+    //       </div>
+    //     </div>
+    //     <div className={classes.ShowStreakToggle}>
+    //       <div className={classes.StreakToggler} onClick={toggleIsShowStreaks}>{!isShowStreak ? 'Show' : 'Hide'} Streaks {isShowStreak && <span className={classes.Close}><FontAwesomeIcon icon={faTimes} /></span>}</div>
+    //     </div>
+    //     {isActivitiesLoaded ? (
+    //       <ul className={classes.ActivityList}>
+    //         {activities.map((activity: Activity) => (
+    //           <li key={activity.id} className={classes.Activity}>
+    //             <div className={classes.Action}>
+    //               {isActivitiesActionLoading ? <Loading /> : <Button
+    //                 isSquare
+    //                 type={activity.positive ? ButtonType.secondary : ButtonType.red}
+    //                 onClick={addActivity(activity.id)}
+    //                 icon={activity.positive ? faPlus : faMinus}
+    //               >
+    //                 <span className={classes.ActivityAmt}>
+    //                   $ {displayNormalMoney(activity.fundAmt)}
+    //                 </span>
+    //               </Button>
+    //               }
+    //               <span className={classes.ActivityText}>
+    //                 {activity.description}
+    //               </span>
+    //             </div>
+    //             {isShowStreak && <Streaks activityStreaks={getActivityStreaks(activity.id)} positive={activity.positive} />}
+    //           </li>
+    //         ))}
+    //       </ul>
+    //     ) : (
+    //         <Loading isLoading />
+    //       )}
+    //   </div>
+    //   <div className={classes.ActivityDetailsSection}>
+    //     <div className={classes.Funds}>
+    //       <HeaderIcon icon={faCoins} text="Current Funds" />
+    //       <Funds />
+    //     </div>
+    //     <div className={classes.TotalPrice}>
+    //       <HeaderIcon icon={faDollarSign} text="Total Funds Needed" />
 
-          {isWishesLoaded ? (
-            <>
-              <p className={classes.Description}>
-                Total Funds needed to buy all wish items:
-              </p>
+    //       {isWishesLoaded ? (
+    //         <>
+    //           <p className={classes.Description}>
+    //             Total Funds needed to buy all wish items:
+    //           </p>
 
-              <p className={classes.Money}>
-                $ {displayNormalMoney(totalPrice)}
-              </p>
-            </>
-          ) : (
-              <Loading isLoading />
-            )}
-        </div>
-        <TodaysActivities />
+    //           <p className={classes.Money}>
+    //             $ {displayNormalMoney(totalPrice)}
+    //           </p>
+    //         </>
+    //       ) : (
+    //           <Loading isLoading />
+    //         )}
+    //     </div>
+    //     <TodaysActivities />
+    //   </div>
+    // </div>
+    <div>
+      <div>
+
       </div>
     </div>
   );

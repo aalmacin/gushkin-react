@@ -1,134 +1,135 @@
-@import "complib/variables.scss";
 
-.ActivityPage {
-  display: flex;
-  margin: 3rem auto;
-  flex-direction: row;
+// @import "complib/variables.scss";
 
-  @media (max-width: 43rem) {
-    flex-direction: column;
-  }
+// .ActivityPage {
+//   display: flex;
+//   margin: 3rem auto;
+//   flex-direction: row;
 
-  h2 {
-    margin-bottom: 1rem;
-  }
+//   @media (max-width: 43rem) {
+//     flex-direction: column;
+//   }
 
-  .ActivitiesSection {
-    flex: 9;
-    padding-right: 3rem;
+//   h2 {
+//     margin-bottom: 1rem;
+//   }
 
-    @media (max-width: 43rem) {
-      flex-direction: column;
-      padding: 0;
-    }
+//   .ActivitiesSection {
+//     flex: 9;
+//     padding-right: 3rem;
 
-    .ShowStreakToggle {
-      display: flex;
-      justify-content: flex-end;
-      margin: 1rem;
-      cursor: pointer;
+//     @media (max-width: 43rem) {
+//       flex-direction: column;
+//       padding: 0;
+//     }
 
-      .StreakToggler {
-        text-decoration: underline;
-      }
+//     .ShowStreakToggle {
+//       display: flex;
+//       justify-content: flex-end;
+//       margin: 1rem;
+//       cursor: pointer;
 
-      .Close {
-        color: getColor(red);
-      }
-    }
+//       .StreakToggler {
+//         text-decoration: underline;
+//       }
 
-    .ActivityList {
-      display: flex;
-      flex-direction: column;
+//       .Close {
+//         color: getColor(red);
+//       }
+//     }
 
-      .Activity {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        border-bottom: 1px dotted getColor(error, tint-7);
-        padding-bottom: 1rem;
+//     .ActivityList {
+//       display: flex;
+//       flex-direction: column;
 
-        .ActivityAction {
-          font-size: 2rem;
-          list-style-type: none;
-          display: flex;
-          flex-direction: row-reverse;
-          align-items: center;
-          justify-content: space-between;
+//       .Activity {
+//         display: flex;
+//         flex-direction: column;
+//         padding: 1rem;
+//         border-bottom: 1px dotted getColor(error, tint-7);
+//         padding-bottom: 1rem;
 
-          &:not(:last-child) {
-            margin-bottom: 1rem;
-          }
+//         .ActivityAction {
+//           font-size: 2rem;
+//           list-style-type: none;
+//           display: flex;
+//           flex-direction: row-reverse;
+//           align-items: center;
+//           justify-content: space-between;
 
-          .ActivityText {
-            flex: 4;
+//           &:not(:last-child) {
+//             margin-bottom: 1rem;
+//           }
 
-            @media (max-width: 43rem) {
-              flex: 2;
-              font-size: 1.5rem;
-            }
-          }
-        }
+//           .ActivityText {
+//             flex: 4;
 
-      }
-    }
-  }
+//             @media (max-width: 43rem) {
+//               flex: 2;
+//               font-size: 1.5rem;
+//             }
+//           }
+//         }
 
-  .ActivityDetailsSection {
-    flex: 3;
-    padding: 0 3rem;
-    display: flex;
-    flex-direction: column;
+//       }
+//     }
+//   }
 
-    border-left: 1px solid getColor(secondary, tint-7);
+//   .ActivityDetailsSection {
+//     flex: 3;
+//     padding: 0 3rem;
+//     display: flex;
+//     flex-direction: column;
 
-    @media (max-width: 43rem) {
-      border: none;
-      padding: 0;
-    }
+//     border-left: 1px solid getColor(secondary, tint-7);
 
-    @media (max-width: 43rem) {
-      margin-top: 4rem;
-    }
+//     @media (max-width: 43rem) {
+//       border: none;
+//       padding: 0;
+//     }
 
-    h2 {
-      margin-bottom: 1rem;
+//     @media (max-width: 43rem) {
+//       margin-top: 4rem;
+//     }
 
-      .Icon {
-        margin-right: 1rem;
-      }
-    }
+//     h2 {
+//       margin-bottom: 1rem;
 
-    .Funds {
-      margin-bottom: 5rem;
-    }
+//       .Icon {
+//         margin-right: 1rem;
+//       }
+//     }
+
+//     .Funds {
+//       margin-bottom: 5rem;
+//     }
 
 
-    .FundChange {
-      margin-top: 1rem;
-      display: flex;
-      flex-grow: 1;
-    }
+//     .FundChange {
+//       margin-top: 1rem;
+//       display: flex;
+//       flex-grow: 1;
+//     }
 
-    .TotalPrice {
-      margin-bottom: 3rem;
+//     .TotalPrice {
+//       margin-bottom: 3rem;
 
-      .Description {
-        margin-bottom: 1rem;
-        font-size: 1.4rem;
-      }
+//       .Description {
+//         margin-bottom: 1rem;
+//         font-size: 1.4rem;
+//       }
 
-      .Money {
-        margin-bottom: 2rem;
-        font-weight: bold;
-      }
-    }
-  }
-}
+//       .Money {
+//         margin-bottom: 2rem;
+//         font-weight: bold;
+//       }
+//     }
+//   }
+// }
 
-.Heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 1rem;
-}
+// .Heading {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: baseline;
+//   margin-bottom: 1rem;
+// }
