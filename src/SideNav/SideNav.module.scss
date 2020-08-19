@@ -5,16 +5,22 @@
   .SideNavItems {
     .SideNavItem {
       list-style: none;
+      padding: 4px;
+      line-height: 32px;
+      margin: 16px 0;
 
       a {
         font-family: Ramabhadra;
         font-style: normal;
         font-weight: normal;
         font-size: 32px;
-        line-height: 61px;
         color: #767676;
         text-decoration: none;
       }
+    }
+
+    .Active {
+      background-color: #9ABFC1;
     }
   }
 }
