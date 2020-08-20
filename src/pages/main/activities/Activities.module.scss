@@ -1,4 +1,3 @@
-
 // @import "complib/variables.scss";
 
 // .ActivityPage {
@@ -133,3 +132,140 @@
 //   align-items: baseline;
 //   margin-bottom: 1rem;
 // }
+
+.ActivityPage {
+  display: flex;
+  flex-direction: column;
+
+  .FundBar {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: #000000;
+    justify-content: space-between;
+  }
+
+  .ActivityBody {
+    background: #F2F6FC;
+    border: 1px solid #667387;
+    padding-top: 0;
+
+    .ActivityNav {
+      display: flex;
+      justify-content: space-between;
+      font-family: "Noto Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 27px;
+
+      color: #767676;
+      border-bottom: 1px solid #667387;
+
+      padding: 16px 24px;
+
+      .NavItems {
+        display: flex;
+
+        a {
+
+          font-family: "Noto Sans";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 27px;
+          text-decoration: none;
+
+          color: #767676;
+
+          &:not(:first-child) {
+            margin-left: 20px;
+          }
+
+          &.ActiveNavItem {
+            font-weight: bold;
+          }
+        }
+      }
+
+      .CreateActivity {
+        button {
+          border: none;
+          background: none;
+          font-family: "Noto Sans";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 27px;
+
+          color: #404855;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .ActivityList {
+      padding: 26px;
+      padding-top: 32px;
+
+      .Activity {
+        list-style: none;
+
+        &:not(:first-child) {
+          margin-top: 32px;
+        }
+
+        .Action {
+          font-family: "Noto Sans";
+          font-style: normal;
+          font-weight: normal;
+          font-size: 32px;
+          line-height: 44px;
+          /* identical to box height */
+
+          .ActivityText {
+            margin-left: 24px;
+
+            .ActivityAmt {
+              font-style: italic;
+              color: #876666;
+            }
+          }
+
+
+          color: #21262D;
+        }
+
+        .PerformActivityButton {
+          border: none;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 24px;
+          padding: 0px 16px;
+          line-height: 61px;
+
+          color: #EFF0FF;
+
+          &.PerformActivityButtonRed {
+            background: #876666;
+          }
+
+          &.PerformActivityButtonGreen {
+            background: #718766;
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+  }
+}

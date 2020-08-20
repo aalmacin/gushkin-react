@@ -24,14 +24,17 @@ import { useGetActivities } from "models/Activity/useGetActivities";
 import { useMutation } from "@apollo/client";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
+import { Link } from "react-router-dom";
 
 function Activities() {
   const { activities, loading: activitiesLoading } = useGetActivities()
 
   const [isShowActivityForm, setShowActivityForm] = useState(false);
   const [isShowStreak, setIsShowStreak] = useState(false);
-  const { refetch: refetchTodaysActions } = useGetTodaysActions()
-  const { refetch: refetchCurrentFunds } = useGetCurrentFunds()
+  const { actions: todaysActions, refetch: refetchTodaysActions } = useGetTodaysActions()
+
+  const todaysFundChanges = todaysActions.reduce((acc, curr) => acc + (curr.activity.fundAmt * (curr.activity.positive ? 1 : -1)), 0)
+  const { currentFunds, refetch: refetchCurrentFunds } = useGetCurrentFunds()
   const [performActivity] = useMutation(PerformActivity, {
     onCompleted: () => {
       refetchTodaysActions()
@@ -149,8 +152,52 @@ function Activities() {
     //   </div>
     // </div>
     <div className={classes.ActivityPage}>
-      <div>
-
+      <div className={classes.FundBar}>
+        <div>Fund Changes Today: ${displayNormalMoney(todaysFundChanges)}</div>
+        <div>Current Funds: ${displayNormalMoney(currentFunds)}</div>
+      </div>
+      <div className={classes.ActivityBody}>
+        <div className={classes.ActivityNav}>
+          <div className={classes.NavItems}>
+            <Link className={classes.ActiveNavItem} to="/main/activities">Home</Link>
+            <Link to="/main/activities/today">Todays Activities</Link>
+            <Link to="/main/activities/today">Streaks</Link>
+          </div>
+          {isShowActivityForm && (
+            <Modal>
+              <ActivityForm closeHandler={closeForm} />
+            </Modal>
+          )}
+          <div className={classes.CreateActivity}>
+            <button onClick={showActivityForm}><FontAwesomeIcon icon={faPlus} /> {' '}Create Activity</button>
+          </div>
+        </div>
+        {isActivitiesLoaded ? (
+          <ul className={classes.ActivityList}>
+            {activities.map((activity: Activity) => (
+              <li key={activity.id} className={classes.Activity}>
+                <div className={classes.Action}>
+                  {isActivitiesActionLoading ? <Loading /> : <button
+                    className={`${classes.PerformActivityButton} ${activity.positive ? classes.PerformActivityButtonGreen : classes.PerformActivityButtonRed}`}
+                    onClick={addActivity(activity.id)}
+                  >
+                    <FontAwesomeIcon icon={activity.positive ? faPlus : faMinus} />
+                  </button>
+                  }
+                  <span className={classes.ActivityText}>
+                    {activity.description} {' '}
+                    <span className={classes.ActivityAmt}>
+                      (${displayNormalMoney(activity.fundAmt)})
+                    </span>
+                  </span>
+                </div>
+                {isShowStreak && <Streaks activityStreaks={getActivityStreaks(activity.id)} positive={activity.positive} />}
+              </li>
+            ))}
+          </ul>
+        ) : (
+            <Loading isLoading />
+          )}
       </div>
     </div>
   );
