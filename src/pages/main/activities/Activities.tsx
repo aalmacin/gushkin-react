@@ -25,6 +25,7 @@ import { useMutation } from "@apollo/client";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { Link } from "react-router-dom";
+import { Toast } from "complib/Toast/Toast";
 
 function Activities() {
   const { activities, loading: activitiesLoading } = useGetActivities()
@@ -163,12 +164,12 @@ function Activities() {
             <Link to="/main/activities/today">Todays Activities</Link>
             <Link to="/main/activities/today">Streaks</Link>
           </div>
-          {isShowActivityForm && (
-            <Modal>
-              <ActivityForm closeHandler={closeForm} />
-            </Modal>
-          )}
           <div className={classes.CreateActivity}>
+            {isShowActivityForm && (
+              <Modal>
+                <ActivityForm closeHandler={closeForm} />
+              </Modal>
+            )}
             <button onClick={showActivityForm}><FontAwesomeIcon icon={faPlus} /> {' '}Create Activity</button>
           </div>
         </div>

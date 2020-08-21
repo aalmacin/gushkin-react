@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./ActivityForm.module.scss";
 import { MICRO_AMOUNT } from "functions/global.constants";
 import Button, { ButtonType } from "complib/Button";
@@ -19,12 +19,17 @@ interface ActivityFormProps {
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
   const { refetch } = useGetActivities()
+  const [isShowToast, setShowToast] = useState(false)
+
+
   const [createActivity] = useMutation(CreateActivity, {
     onCompleted: () => {
       refetch()
       closeHandler()
+      setShowToast(true)
     }
   })
+
   const initialFormState = {
     description: "",
     fundAmt: 0,
