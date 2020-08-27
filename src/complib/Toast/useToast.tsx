@@ -1,19 +1,18 @@
-import { useState } from '@storybook/addons';
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useMemo } from 'react'
+import React from 'react'
+import Toast from './Toast';
 import { ToastContext } from './ToastProvider';
 
-export const useToast = (duration: number) => {
-  const { isShow, showToast, hideToast } = useContext(ToastContext)
+export const useToast = () => {
+  const { isShow, showToast, message, updateMessage, updateDuration } = useContext(ToastContext)
 
+  const toast = <Toast showToast={isShow}>{message}</Toast>
 
-  useEffect(() => {
-    if (isShow) {
-      const removeToastAfter5Seconds = setTimeout(() => {
-        hideToast()
-      }, duration)
-      return () => clearTimeout(removeToastAfter5Seconds)
-    }
-  }, [isShow, hideToast, duration])
+  const showToastCallback = (message: string, duration: number = 5000) => {
+    showToast()
+    updateMessage(message)
+    updateDuration(duration)
+  }
 
-  return { isShow, showToast }
+  return { toast, showToast: showToastCallback }
 }

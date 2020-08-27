@@ -4,28 +4,19 @@ import React, { useState } from "react";
 import {
   faPlus,
   faMinus,
-  faRunning,
-  faCoins,
-  faDollarSign,
-  faTimes
 } from "@fortawesome/free-solid-svg-icons";
-import Button, { ButtonType } from "complib/Button";
 import Modal from "complib/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "complib/Loading";
 import { displayNormalMoney } from "functions/utils.functions";
-import Funds from "pages/main/shared/Funds";
-import HeaderIcon from "pages/main/shared/HeaderIcon";
 import ActivityForm from "./activity-form";
 import Streaks from "./streaks";
-import TodaysActivities from "./TodaysActivities";
 import { Activity } from "models/Activity/Activity.types";
 import { useGetActivities } from "models/Activity/useGetActivities";
 import { useMutation } from "@apollo/client";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { Link } from "react-router-dom";
-import { Toast } from "complib/Toast/Toast";
 
 function Activities() {
   const { activities, loading: activitiesLoading } = useGetActivities()

@@ -11,6 +11,7 @@ import { ActivityInput } from "models/Activity/Activity.types";
 import ErrorList from "pages/error";
 import { useMutation } from "@apollo/react-hooks";
 import { useGetActivities } from "models/Activity/useGetActivities";
+import { useToast } from "complib/Toast/useToast";
 
 
 interface ActivityFormProps {
@@ -19,14 +20,14 @@ interface ActivityFormProps {
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
   const { refetch } = useGetActivities()
-  const [isShowToast, setShowToast] = useState(false)
 
+  const { showToast } = useToast()
 
   const [createActivity] = useMutation(CreateActivity, {
     onCompleted: () => {
       refetch()
       closeHandler()
-      setShowToast(true)
+      showToast('Successfully created Activity')
     }
   })
 
