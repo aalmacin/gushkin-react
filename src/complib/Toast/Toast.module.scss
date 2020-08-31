@@ -1,7 +1,16 @@
 .Toast {
-  background-color: white;
+  background-color: rgb(210, 223, 235);
   position: absolute;
-  bottom: 3%;
+  // bottom: 3%;
+  // left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
   left: 50%;
-  transform: translateX(50%);
+  top: -30px;
+  padding: 1rem;
+  border-radius: 5px;
+  transition: top 1s;
+  top: 10px;
+  font-size: 24px;
+  box-shadow: 0px 0px 105x 12px rgba(133, 137, 128, 0.2);
 }
