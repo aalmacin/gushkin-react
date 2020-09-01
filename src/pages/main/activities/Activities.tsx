@@ -1,19 +1,15 @@
 import classes from "./Activities.module.scss";
 import React, { useState } from "react";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Modal from "complib/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "complib/Loading";
 import { displayNormalMoney } from "functions/utils.functions";
 import ActivityForm from "./activity-form";
-import Streaks from "./streaks";
-import { Activity } from "models/Activity/Activity.types";
 import { useGetActivities } from "models/Activity/useGetActivities";
-import { useMutation } from "@apollo/client";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { Link } from "react-router-dom";
-import { useToast } from "complib/Toast/useToast";
 import ActivityList from "./ActivityList";
 
 function Activities() {
@@ -33,8 +29,6 @@ function Activities() {
   // TODO: Add real pull
   const activityStreaks: any[] = [];
   const isActivitiesLoaded = true;
-  const isWishesLoaded = true;
-  const totalPrice = 0;
 
   const showActivityForm = () => {
     setShowActivityForm(true);
