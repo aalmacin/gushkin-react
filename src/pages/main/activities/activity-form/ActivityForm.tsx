@@ -13,29 +13,28 @@ import { useMutation } from "@apollo/react-hooks";
 import { useGetActivities } from "models/Activity/useGetActivities";
 import { useToast } from "complib/Toast/useToast";
 
-
 interface ActivityFormProps {
   closeHandler: () => void;
 }
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
-  const { refetch } = useGetActivities()
+  const { refetch } = useGetActivities();
 
-  const { showToast } = useToast()
+  const { showToast } = useToast();
 
   const [createActivity] = useMutation(CreateActivity, {
     onCompleted: () => {
-      refetch()
-      closeHandler()
-      showToast('Successfully created Activity')
-    }
-  })
+      refetch();
+      closeHandler();
+      showToast("Successfully created Activity", 3000);
+    },
+  });
 
   const initialFormState = {
     description: "",
     fundAmt: 0,
-    positive: true
-  }
+    positive: true,
+  };
   const [activity, setActivity] = useState<ActivityInput>(initialFormState);
 
   const [errors, setErrors] = useState<string[]>([]);
@@ -62,7 +61,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
   ) => {
     setActivity({
       ...activity,
-      [key]: event.target.value
+      [key]: event.target.value,
     });
     setErrors(getErrors());
   };
@@ -70,7 +69,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
   const updatePositive = () => {
     setActivity({
       ...activity,
-      positive: !activity.positive
+      positive: !activity.positive,
     });
     setErrors(getErrors());
   };
@@ -84,9 +83,9 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
       createActivity({
         variables: {
           ...activity,
-          fundAmt
+          fundAmt,
         },
-      })
+      });
 
       setActivity({ ...initialFormState });
     }
@@ -97,43 +96,43 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
       <ErrorList errors={errors} />
       <div className={classes.FormContainer}>
         <FormClose onClose={closeHandler} />
-        {isActivitiesActionLoading ? <Loading /> : <form
-          onSubmit={e => {
-            e.preventDefault();
-          }}
-        >
-          <div className={classes.FormGroup}>
-            <TextField
-              label="Description"
-              value={activity.description}
-              onChange={updateFormControl("description")}
-            />
-          </div>
-          <div className={classes.FormGroup}>
-            <NumberField
-              label="Fund Amount"
-              value={activity.fundAmt}
-              onChange={updateFormControl("fundAmt")}
-            />
-          </div>
-          <div className={classes.FormGroup}>
-            <label>Positive</label>
-            <input
-              type="checkbox"
-              checked={activity.positive}
-              onChange={updatePositive}
-            />
-          </div>
-          <div className={classes.ButtonContainer}>
-            <Button
-              type={ButtonType.primary}
-              onClick={submitFormHandler}
-            >
-              Submit
-            </Button>
-          </div>
-        </form>
-        }
+        {isActivitiesActionLoading ? (
+          <Loading />
+        ) : (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <div className={classes.FormGroup}>
+              <TextField
+                label="Description"
+                value={activity.description}
+                onChange={updateFormControl("description")}
+              />
+            </div>
+            <div className={classes.FormGroup}>
+              <NumberField
+                label="Fund Amount"
+                value={activity.fundAmt}
+                onChange={updateFormControl("fundAmt")}
+              />
+            </div>
+            <div className={classes.FormGroup}>
+              <label>Positive</label>
+              <input
+                type="checkbox"
+                checked={activity.positive}
+                onChange={updatePositive}
+              />
+            </div>
+            <div className={classes.ButtonContainer}>
+              <Button type={ButtonType.primary} onClick={submitFormHandler}>
+                Submit
+              </Button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );

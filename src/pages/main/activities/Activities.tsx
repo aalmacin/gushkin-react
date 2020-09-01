@@ -1,10 +1,7 @@
 import { PerformActivity } from "models/Action/Action.mutations";
-import classes from './Activities.module.scss'
+import classes from "./Activities.module.scss";
 import React, { useState } from "react";
-import {
-  faPlus,
-  faMinus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import Modal from "complib/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "complib/Loading";
@@ -17,36 +14,46 @@ import { useMutation } from "@apollo/client";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { Link } from "react-router-dom";
+import { useToast } from "complib/Toast/useToast";
 
 function Activities() {
-  const { activities, loading: activitiesLoading } = useGetActivities()
+  const { activities, loading: activitiesLoading } = useGetActivities();
 
   const [isShowActivityForm, setShowActivityForm] = useState(false);
   const [isShowStreak, setIsShowStreak] = useState(false);
-  const { actions: todaysActions, refetch: refetchTodaysActions } = useGetTodaysActions()
+  const {
+    actions: todaysActions,
+    refetch: refetchTodaysActions,
+  } = useGetTodaysActions();
 
-  const todaysFundChanges = todaysActions.reduce((acc, curr) => acc + (curr.activity.fundAmt * (curr.activity.positive ? 1 : -1)), 0)
-  const { currentFunds, refetch: refetchCurrentFunds } = useGetCurrentFunds()
+  const todaysFundChanges = todaysActions.reduce(
+    (acc, curr) =>
+      acc + curr.activity.fundAmt * (curr.activity.positive ? 1 : -1),
+    0
+  );
+  const { currentFunds, refetch: refetchCurrentFunds } = useGetCurrentFunds();
+  const { showToast } = useToast();
   const [performActivity] = useMutation(PerformActivity, {
     onCompleted: () => {
-      refetchTodaysActions()
-      refetchCurrentFunds()
-    }
-  })
+      refetchTodaysActions();
+      refetchCurrentFunds();
+      showToast("Performed activity", 3000);
+    },
+  });
 
   // TODO: Add real pull
-  const activityStreaks: any[] = []
-  const isActivitiesActionLoading = false
-  const isActivitiesLoaded = true
-  const isWishesLoaded = true
-  const totalPrice = 0
+  const activityStreaks: any[] = [];
+  const isActivitiesActionLoading = false;
+  const isActivitiesLoaded = true;
+  const isWishesLoaded = true;
+  const totalPrice = 0;
 
   const addActivity = (activityId: string) => () => {
     performActivity({
       variables: {
-        activityId: parseInt(`${activityId}`)
-      }
-    })
+        activityId: parseInt(`${activityId}`),
+      },
+    });
   };
 
   const showActivityForm = () => {
@@ -59,90 +66,19 @@ function Activities() {
 
   const toggleIsShowStreaks = () => {
     setIsShowStreak(!isShowStreak);
-  }
+  };
 
   const getActivityStreaks = (id: any) => {
-    return activityStreaks.find(t => `${t.activityId}` === `${id}`)?.days || []
-  }
+    return (
+      activityStreaks.find((t) => `${t.activityId}` === `${id}`)?.days || []
+    );
+  };
 
   if (activitiesLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
-    // <div className={classes.ActivityPage}>
-    //   <div className={classes.ActivitiesSection}>
-    //     {isShowActivityForm && (
-    //       <Modal>
-    //         <ActivityForm closeHandler={closeForm} />
-    //       </Modal>
-    //     )}
-    //     <div className={classes.Heading}>
-    //       <HeaderIcon icon={faRunning} text="Activities" />
-    //       <div>
-    //         <Button
-    //           onClick={showActivityForm}
-    //           type={ButtonType.primary}
-    //           icon={faPlus}
-    //         />
-    //       </div>
-    //     </div>
-    //     <div className={classes.ShowStreakToggle}>
-    //       <div className={classes.StreakToggler} onClick={toggleIsShowStreaks}>{!isShowStreak ? 'Show' : 'Hide'} Streaks {isShowStreak && <span className={classes.Close}><FontAwesomeIcon icon={faTimes} /></span>}</div>
-    //     </div>
-    //     {isActivitiesLoaded ? (
-    //       <ul className={classes.ActivityList}>
-    //         {activities.map((activity: Activity) => (
-    //           <li key={activity.id} className={classes.Activity}>
-    //             <div className={classes.Action}>
-    //               {isActivitiesActionLoading ? <Loading /> : <Button
-    //                 isSquare
-    //                 type={activity.positive ? ButtonType.secondary : ButtonType.red}
-    //                 onClick={addActivity(activity.id)}
-    //                 icon={activity.positive ? faPlus : faMinus}
-    //               >
-    //                 <span className={classes.ActivityAmt}>
-    //                   $ {displayNormalMoney(activity.fundAmt)}
-    //                 </span>
-    //               </Button>
-    //               }
-    //               <span className={classes.ActivityText}>
-    //                 {activity.description}
-    //               </span>
-    //             </div>
-    //             {isShowStreak && <Streaks activityStreaks={getActivityStreaks(activity.id)} positive={activity.positive} />}
-    //           </li>
-    //         ))}
-    //       </ul>
-    //     ) : (
-    //         <Loading isLoading />
-    //       )}
-    //   </div>
-    //   <div className={classes.ActivityDetailsSection}>
-    //     <div className={classes.Funds}>
-    //       <HeaderIcon icon={faCoins} text="Current Funds" />
-    //       <Funds />
-    //     </div>
-    //     <div className={classes.TotalPrice}>
-    //       <HeaderIcon icon={faDollarSign} text="Total Funds Needed" />
-
-    //       {isWishesLoaded ? (
-    //         <>
-    //           <p className={classes.Description}>
-    //             Total Funds needed to buy all wish items:
-    //           </p>
-
-    //           <p className={classes.Money}>
-    //             $ {displayNormalMoney(totalPrice)}
-    //           </p>
-    //         </>
-    //       ) : (
-    //           <Loading isLoading />
-    //         )}
-    //     </div>
-    //     <TodaysActivities />
-    //   </div>
-    // </div>
     <div className={classes.ActivityPage}>
       <div className={classes.FundBar}>
         <div>Fund Changes Today: ${displayNormalMoney(todaysFundChanges)}</div>
@@ -151,9 +87,11 @@ function Activities() {
       <div className={classes.ActivityBody}>
         <div className={classes.ActivityNav}>
           <div className={classes.NavItems}>
-            <Link className={classes.ActiveNavItem} to="/main/activities">Home</Link>
+            <Link className={classes.ActiveNavItem} to="/main/activities">
+              Home
+            </Link>
             <Link to="/main/activities/today">Todays Activities</Link>
-            <Link to="/main/activities/today">Streaks</Link>
+            <Link to="/main/activities/streaks">Streaks</Link>
           </div>
           <div className={classes.CreateActivity}>
             {isShowActivityForm && (
@@ -161,7 +99,9 @@ function Activities() {
                 <ActivityForm closeHandler={closeForm} />
               </Modal>
             )}
-            <button onClick={showActivityForm}><FontAwesomeIcon icon={faPlus} /> {' '}Create Activity</button>
+            <button onClick={showActivityForm}>
+              <FontAwesomeIcon icon={faPlus} /> Create Activity
+            </button>
           </div>
         </div>
         {isActivitiesLoaded ? (
@@ -169,27 +109,41 @@ function Activities() {
             {activities.map((activity: Activity) => (
               <li key={activity.id} className={classes.Activity}>
                 <div className={classes.Action}>
-                  {isActivitiesActionLoading ? <Loading /> : <button
-                    className={`${classes.PerformActivityButton} ${activity.positive ? classes.PerformActivityButtonGreen : classes.PerformActivityButtonRed}`}
-                    onClick={addActivity(activity.id)}
-                  >
-                    <FontAwesomeIcon icon={activity.positive ? faPlus : faMinus} />
-                  </button>
-                  }
+                  {isActivitiesActionLoading ? (
+                    <Loading />
+                  ) : (
+                    <button
+                      className={`${classes.PerformActivityButton} ${
+                        activity.positive
+                          ? classes.PerformActivityButtonGreen
+                          : classes.PerformActivityButtonRed
+                      }`}
+                      onClick={addActivity(activity.id)}
+                    >
+                      <FontAwesomeIcon
+                        icon={activity.positive ? faPlus : faMinus}
+                      />
+                    </button>
+                  )}
                   <span className={classes.ActivityText}>
-                    {activity.description} {' '}
+                    {activity.description}{" "}
                     <span className={classes.ActivityAmt}>
                       (${displayNormalMoney(activity.fundAmt)})
                     </span>
                   </span>
                 </div>
-                {isShowStreak && <Streaks activityStreaks={getActivityStreaks(activity.id)} positive={activity.positive} />}
+                {isShowStreak && (
+                  <Streaks
+                    activityStreaks={getActivityStreaks(activity.id)}
+                    positive={activity.positive}
+                  />
+                )}
               </li>
             ))}
           </ul>
         ) : (
-            <Loading isLoading />
-          )}
+          <Loading isLoading />
+        )}
       </div>
     </div>
   );
