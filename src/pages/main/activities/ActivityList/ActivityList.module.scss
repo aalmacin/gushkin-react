@@ -1,0 +1,55 @@
+.ActivityList {
+  padding: 26px;
+  padding-top: 32px;
+
+  .Activity {
+    list-style: none;
+
+    &:not(:first-child) {
+      margin-top: 32px;
+    }
+
+    .Action {
+      font-family: "Noto Sans";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 32px;
+      line-height: 44px;
+      /* identical to box height */
+
+      .ActivityText {
+        margin-left: 24px;
+
+        .ActivityAmt {
+          font-style: italic;
+          color: #876666;
+        }
+      }
+
+      color: #21262d;
+    }
+
+    .PerformActivityButton {
+      border: none;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      padding: 0px 16px;
+      line-height: 61px;
+
+      color: #eff0ff;
+
+      &.PerformActivityButtonRed {
+        background: #876666;
+      }
+
+      &.PerformActivityButtonGreen {
+        background: #718766;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

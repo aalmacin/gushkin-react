@@ -1,4 +1,3 @@
-import { PerformActivity } from "models/Action/Action.mutations";
 import classes from "./Activities.module.scss";
 import React, { useState } from "react";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
@@ -15,46 +14,27 @@ import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { Link } from "react-router-dom";
 import { useToast } from "complib/Toast/useToast";
+import ActivityList from "./ActivityList";
 
 function Activities() {
-  const { activities, loading: activitiesLoading } = useGetActivities();
+  const { loading: activitiesLoading } = useGetActivities();
 
   const [isShowActivityForm, setShowActivityForm] = useState(false);
-  const [isShowStreak, setIsShowStreak] = useState(false);
-  const {
-    actions: todaysActions,
-    refetch: refetchTodaysActions,
-  } = useGetTodaysActions();
+  const { actions: todaysActions } = useGetTodaysActions();
 
   const todaysFundChanges = todaysActions.reduce(
     (acc, curr) =>
       acc + curr.activity.fundAmt * (curr.activity.positive ? 1 : -1),
     0
   );
-  const { currentFunds, refetch: refetchCurrentFunds } = useGetCurrentFunds();
-  const { showToast } = useToast();
-  const [performActivity] = useMutation(PerformActivity, {
-    onCompleted: () => {
-      refetchTodaysActions();
-      refetchCurrentFunds();
-      showToast("Performed activity", 3000);
-    },
-  });
+
+  const { currentFunds } = useGetCurrentFunds();
 
   // TODO: Add real pull
   const activityStreaks: any[] = [];
-  const isActivitiesActionLoading = false;
   const isActivitiesLoaded = true;
   const isWishesLoaded = true;
   const totalPrice = 0;
-
-  const addActivity = (activityId: string) => () => {
-    performActivity({
-      variables: {
-        activityId: parseInt(`${activityId}`),
-      },
-    });
-  };
 
   const showActivityForm = () => {
     setShowActivityForm(true);
@@ -62,10 +42,6 @@ function Activities() {
 
   const closeForm = () => {
     setShowActivityForm(false);
-  };
-
-  const toggleIsShowStreaks = () => {
-    setIsShowStreak(!isShowStreak);
   };
 
   const getActivityStreaks = (id: any) => {
@@ -104,46 +80,7 @@ function Activities() {
             </button>
           </div>
         </div>
-        {isActivitiesLoaded ? (
-          <ul className={classes.ActivityList}>
-            {activities.map((activity: Activity) => (
-              <li key={activity.id} className={classes.Activity}>
-                <div className={classes.Action}>
-                  {isActivitiesActionLoading ? (
-                    <Loading />
-                  ) : (
-                    <button
-                      className={`${classes.PerformActivityButton} ${
-                        activity.positive
-                          ? classes.PerformActivityButtonGreen
-                          : classes.PerformActivityButtonRed
-                      }`}
-                      onClick={addActivity(activity.id)}
-                    >
-                      <FontAwesomeIcon
-                        icon={activity.positive ? faPlus : faMinus}
-                      />
-                    </button>
-                  )}
-                  <span className={classes.ActivityText}>
-                    {activity.description}{" "}
-                    <span className={classes.ActivityAmt}>
-                      (${displayNormalMoney(activity.fundAmt)})
-                    </span>
-                  </span>
-                </div>
-                {isShowStreak && (
-                  <Streaks
-                    activityStreaks={getActivityStreaks(activity.id)}
-                    positive={activity.positive}
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <Loading isLoading />
-        )}
+        {isActivitiesLoaded ? <ActivityList /> : <Loading isLoading />}
       </div>
     </div>
   );
