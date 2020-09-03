@@ -9,11 +9,12 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { useToast } from "complib/Toast/useToast";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/client";
 import { PerformActivity } from "models/Action/Action.mutations";
+import { GetActivities } from "models/Activity/Activity.queries";
 
 export default function ActivityList() {
-  const { activities } = useGetActivities();
+  const { data, loading } = useQuery(GetActivities)
   const isActivitiesActionLoading = false;
 
   const { refetch: refetchTodaysActions } = useGetTodaysActions();
@@ -36,6 +37,13 @@ export default function ActivityList() {
     });
   };
 
+
+  if (loading) {
+    return null;
+  }
+
+  const activities = data.activities
+
   return (
     <ul className={classes.ActivityList}>
       {activities.map((activity: Activity) => (
@@ -44,17 +52,16 @@ export default function ActivityList() {
             {isActivitiesActionLoading ? (
               <Loading />
             ) : (
-              <button
-                className={`${classes.PerformActivityButton} ${
-                  activity.positive
+                <button
+                  className={`${classes.PerformActivityButton} ${activity.positive
                     ? classes.PerformActivityButtonGreen
                     : classes.PerformActivityButtonRed
-                }`}
-                onClick={addActivity(activity.id)}
-              >
-                <FontAwesomeIcon icon={activity.positive ? faPlus : faMinus} />
-              </button>
-            )}
+                    }`}
+                  onClick={addActivity(activity.id)}
+                >
+                  <FontAwesomeIcon icon={activity.positive ? faPlus : faMinus} />
+                </button>
+              )}
             <span className={classes.ActivityText}>
               {activity.description}{" "}
               <span className={classes.ActivityAmt}>

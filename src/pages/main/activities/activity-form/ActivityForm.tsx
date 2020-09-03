@@ -12,22 +12,28 @@ import ErrorList from "pages/error";
 import { useMutation } from "@apollo/react-hooks";
 import { useGetActivities } from "models/Activity/useGetActivities";
 import { useToast } from "complib/Toast/useToast";
+import { GetActivities } from "models/Activity/Activity.queries";
 
 interface ActivityFormProps {
   closeHandler: () => void;
 }
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
-  const { refetch } = useGetActivities();
+  // const { refetch } = useGetActivities();
 
   const { showToast } = useToast();
 
   const [createActivity] = useMutation(CreateActivity, {
     onCompleted: () => {
-      refetch();
+      // refetch();
       closeHandler();
       showToast("Successfully created Activity", 3000);
     },
+    update: (cache, response) => {
+      const currentData = cache.readQuery<any>({ query: GetActivities })
+      const updated = [...currentData.activities, response.data.createActivity]
+      cache.writeQuery({ query: GetActivities, data: { activities: updated } })
+    }
   });
 
   const initialFormState = {
@@ -99,40 +105,40 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
         {isActivitiesActionLoading ? (
           <Loading />
         ) : (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <div className={classes.FormGroup}>
-              <TextField
-                label="Description"
-                value={activity.description}
-                onChange={updateFormControl("description")}
-              />
-            </div>
-            <div className={classes.FormGroup}>
-              <NumberField
-                label="Fund Amount"
-                value={activity.fundAmt}
-                onChange={updateFormControl("fundAmt")}
-              />
-            </div>
-            <div className={classes.FormGroup}>
-              <label>Positive</label>
-              <input
-                type="checkbox"
-                checked={activity.positive}
-                onChange={updatePositive}
-              />
-            </div>
-            <div className={classes.ButtonContainer}>
-              <Button type={ButtonType.primary} onClick={submitFormHandler}>
-                Submit
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <div className={classes.FormGroup}>
+                <TextField
+                  label="Description"
+                  value={activity.description}
+                  onChange={updateFormControl("description")}
+                />
+              </div>
+              <div className={classes.FormGroup}>
+                <NumberField
+                  label="Fund Amount"
+                  value={activity.fundAmt}
+                  onChange={updateFormControl("fundAmt")}
+                />
+              </div>
+              <div className={classes.FormGroup}>
+                <label>Positive</label>
+                <input
+                  type="checkbox"
+                  checked={activity.positive}
+                  onChange={updatePositive}
+                />
+              </div>
+              <div className={classes.ButtonContainer}>
+                <Button type={ButtonType.primary} onClick={submitFormHandler}>
+                  Submit
               </Button>
-            </div>
-          </form>
-        )}
+              </div>
+            </form>
+          )}
       </div>
     </div>
   );
