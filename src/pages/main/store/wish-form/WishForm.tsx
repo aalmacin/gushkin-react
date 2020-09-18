@@ -6,24 +6,24 @@ import { MICRO_AMOUNT } from "functions/global.constants";
 import TextField from "complib/TextField";
 import NumberField from "complib/NumberField";
 import Button, { ButtonType } from "complib/Button";
-import { CreateWish } from "models/Wish/Wish.mutations";
+import { CREATE_WISH } from "models/Wish/Wish.mutations";
 import { CreateWishInput, Priority, Status } from "models/Wish/Wish.types";
 import ErrorList from "pages/error";
 import { useGetWishes } from "models/Wish/useGetWishes";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 
 interface WishFormProps {
-  onCompleted: Function
+  onCompleted: Function;
 }
 
 const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
-  const { refetch } = useGetWishes()
-  const [createWish] = useMutation(CreateWish, {
+  const { refetch } = useGetWishes();
+  const [createWish] = useMutation(CREATE_WISH, {
     onCompleted: () => {
-      refetch()
-      onCompleted()
+      refetch();
+      onCompleted();
     }
-  })
+  });
 
   const [wish, setWish] = useState<CreateWishInput>({
     description: "",
@@ -79,7 +79,7 @@ const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
           ...wish,
           price
         }
-      })
+      });
     }
   };
 
@@ -183,6 +183,6 @@ const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
       </form>
     </div>
   );
-}
+};
 
 export default WishForm;

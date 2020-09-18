@@ -1,7 +1,7 @@
-import { gql } from "@apollo/react-hooks"
+import { gql } from "@apollo/client";
 
 export interface GetActionInput {
-  today: boolean
+  today: boolean;
 }
 
 export const GetActions = gql`
@@ -17,4 +17,4 @@ export const GetActions = gql`
         }
     }
   }
-`
+`;

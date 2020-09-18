@@ -1,21 +1,23 @@
 import { Wish } from "models/Wish/Wish.types";
 import React, { createContext } from "react";
-import { ApolloError, useQuery } from "@apollo/react-hooks";
 import { GetWishes } from "models/Wish/Wish.queries";
+import { ApolloError, useQuery } from "@apollo/client";
 
-type Refetch = () => void
+type Refetch = () => void;
 
-type GetWishesContextValues = { wishes: Wish[], refetch: Refetch, loading?: boolean, error?: ApolloError }
+export type StoreItem = Partial<Wish & { readonly isInCart: boolean; readonly priceDisplay: string; }>;
 
-const noop = () => { }
+type GetWishesContextValues = { wishes: StoreItem[], refetch: Refetch, loading?: boolean, error?: ApolloError; };
 
-export const GetWishesContext = createContext<GetWishesContextValues>({ wishes: [], refetch: noop })
+const noop = () => { };
+
+export const GetWishesContext = createContext<GetWishesContextValues>({ wishes: [], refetch: noop });
 
 export const GetWishesProvider: React.FC = ({ children }) => {
-  const { data, refetch, loading, error } = useQuery(GetWishes)
-  const wishes = (data && data.wishes) || []
+  const { data, refetch, loading, error } = useQuery(GetWishes);
+  const wishes = (data && data.wishes) || [];
 
   return <GetWishesContext.Provider value={{ wishes, refetch, loading, error }}>
     {children}
-  </GetWishesContext.Provider>
-}
+  </GetWishesContext.Provider>;
+};

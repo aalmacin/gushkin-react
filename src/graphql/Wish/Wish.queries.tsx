@@ -1,16 +1,14 @@
 import { gql } from "@apollo/client";
 
-export const GetWishes = gql`
-  query GetWishes {
+export const GET_WISHES = gql`
+  query getWishes {
     wishes {
       id
       description
       price
-      priceDisplay @client
       source
       priority
       status
-      isInCart @client
     }
   }
 `;

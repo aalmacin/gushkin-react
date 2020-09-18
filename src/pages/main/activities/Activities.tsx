@@ -4,7 +4,6 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Modal from "complib/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "complib/Loading";
-import { displayNormalMoney } from "functions/utils.functions";
 import ActivityForm from "./activity-form";
 import { useGetActivities } from "models/Activity/useGetActivities";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
@@ -27,7 +26,6 @@ function Activities() {
   const { currentFunds } = useGetCurrentFunds();
 
   // TODO: Add real pull
-  const activityStreaks: any[] = [];
   const isActivitiesLoaded = true;
 
   const showActivityForm = () => {
@@ -38,12 +36,6 @@ function Activities() {
     setShowActivityForm(false);
   };
 
-  const getActivityStreaks = (id: any) => {
-    return (
-      activityStreaks.find((t) => `${t.activityId}` === `${id}`)?.days || []
-    );
-  };
-
   if (activitiesLoading) {
     return <Loading />;
   }
@@ -51,8 +43,8 @@ function Activities() {
   return (
     <div className={classes.ActivityPage}>
       <div className={classes.FundBar}>
-        <div>Fund Changes Today: ${displayNormalMoney(todaysFundChanges)}</div>
-        <div>Current Funds: ${displayNormalMoney(currentFunds)}</div>
+        <div>Fund Changes Today: ${todaysFundChanges}</div>
+        <div>Current Funds: ${currentFunds}</div>
       </div>
       <div className={classes.ActivityBody}>
         <div className={classes.ActivityNav}>

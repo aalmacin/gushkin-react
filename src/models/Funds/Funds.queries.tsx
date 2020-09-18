@@ -1,7 +1,7 @@
-import { gql } from "@apollo/react-hooks"
+import { gql } from "@apollo/client";
 
 export const GetCurrentFunds = gql`
   query GetCurrentFunds {
     currentFunds
   }
-`
+`;

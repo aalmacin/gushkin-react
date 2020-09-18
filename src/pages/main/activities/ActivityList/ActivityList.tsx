@@ -1,20 +1,18 @@
 import React from "react";
 import classes from "./ActivityList.module.scss";
 import { Activity } from "models/Activity/Activity.types";
-import { useGetActivities } from "models/Activity/useGetActivities";
 import Loading from "complib/Loading";
-import { displayNormalMoney } from "functions/utils.functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { useToast } from "complib/Toast/useToast";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { PerformActivity } from "models/Action/Action.mutations";
-import { GetActivities } from "models/Activity/Activity.queries";
+import { useGetActivities } from "models/Activity/useGetActivities";
 
 export default function ActivityList() {
-  const { data, loading } = useQuery(GetActivities)
+  const { activities, loading } = useGetActivities();
   const isActivitiesActionLoading = false;
 
   const { refetch: refetchTodaysActions } = useGetTodaysActions();
@@ -42,8 +40,6 @@ export default function ActivityList() {
     return null;
   }
 
-  const activities = data.activities
-
   return (
     <ul className={classes.ActivityList}>
       {activities.map((activity: Activity) => (
@@ -65,7 +61,7 @@ export default function ActivityList() {
             <span className={classes.ActivityText}>
               {activity.description}{" "}
               <span className={classes.ActivityAmt}>
-                (${displayNormalMoney(activity.fundAmt)})
+                (${activity.fundAmt})
               </span>
             </span>
           </div>

@@ -3,14 +3,14 @@ import classes from "./BoughtItems.module.scss";
 
 import Loading from "complib/Loading";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import { displayNormalMoney } from "functions/utils.functions";
 import HeaderIcon from "pages/main/shared/HeaderIcon";
 import { Wish } from "models/Wish/Wish.types";
+import { StoreItem } from "models/Wish/GetWishes.provider";
 
 function BoughtItems() {
   // TODO: Add real pull
-  const isWishesLoaded = true
-  const storeArchiveItems: Wish[] = []
+  const isWishesLoaded = true;
+  const storeArchiveItems: StoreItem[] = [];
 
   return (
     isWishesLoaded ?
@@ -27,14 +27,14 @@ function BoughtItems() {
             <div key={wish.id} className={classes.ArchiveItem}>
               <p>{wish.description}</p>
               <p>{wish.priority}</p>
-              <p>${displayNormalMoney(wish.price)}</p>
+              <p>${wish.priceDisplay}</p>
             </div>
           ))}
         </div>
       </div>
       :
       <Loading />
-  )
+  );
 }
 
 export default BoughtItems;

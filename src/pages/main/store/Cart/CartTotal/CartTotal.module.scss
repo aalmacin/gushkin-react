@@ -1,0 +1,15 @@
+$borderColor: gray;
+
+.CartTotal {
+  margin-bottom: 2rem;
+  font-weight: bold;
+  padding: 2rem;
+  border: 1px solid $borderColor;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}

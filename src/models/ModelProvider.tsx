@@ -3,7 +3,6 @@ import { GetActionsProvider } from './Action/GetActions.provider'
 import { GetTodaysActionsProvider } from './Action/GetTodaysActions.provider'
 import { GetActivitiesProvider } from './Activity/GetActivities.provider'
 import { GetWishesProvider } from './Wish/GetWishes.provider'
-import { CartProvider } from './Cart/Cart.provider'
 import { GetCurrentFundsProvider } from './Funds/GetCurrentFunds.provider'
 
 export const ModelProvider: React.FC = ({ children }) => {
@@ -11,11 +10,9 @@ export const ModelProvider: React.FC = ({ children }) => {
     <GetActionsProvider>
       <GetWishesProvider>
         <GetActivitiesProvider>
-          <CartProvider>
-            <GetCurrentFundsProvider>
-              {children}
-            </GetCurrentFundsProvider>
-          </CartProvider>
+          <GetCurrentFundsProvider>
+            {children}
+          </GetCurrentFundsProvider>
         </GetActivitiesProvider>
       </GetWishesProvider>
     </GetActionsProvider>

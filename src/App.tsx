@@ -8,7 +8,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { ModelProvider } from "models/ModelProvider";
 import SideNav from "SideNav";
 import { useToast } from "complib/Toast/useToast";
-import Toast from "complib/Toast";
 
 const Main = React.lazy(() => import("./pages/main/Main"));
 const Home = React.lazy(() => import("./pages/home/Home"));

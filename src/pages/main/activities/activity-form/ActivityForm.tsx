@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "./ActivityForm.module.scss";
 import { MICRO_AMOUNT } from "functions/global.constants";
 import Button, { ButtonType } from "complib/Button";
@@ -9,8 +9,7 @@ import Loading from "complib/Loading";
 import { CreateActivity } from "models/Activity/Activity.mutations";
 import { ActivityInput } from "models/Activity/Activity.types";
 import ErrorList from "pages/error";
-import { useMutation } from "@apollo/react-hooks";
-import { useGetActivities } from "models/Activity/useGetActivities";
+import { useMutation } from "@apollo/client";
 import { useToast } from "complib/Toast/useToast";
 import { GetActivities } from "models/Activity/Activity.queries";
 
@@ -30,9 +29,9 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
       showToast("Successfully created Activity", 3000);
     },
     update: (cache, response) => {
-      const currentData = cache.readQuery<any>({ query: GetActivities })
-      const updated = [...currentData.activities, response.data.createActivity]
-      cache.writeQuery({ query: GetActivities, data: { activities: updated } })
+      const currentData = cache.readQuery<any>({ query: GetActivities });
+      const updated = [...currentData.activities, response.data.createActivity];
+      cache.writeQuery({ query: GetActivities, data: { activities: updated } });
     }
   });
 

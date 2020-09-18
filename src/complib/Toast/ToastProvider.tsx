@@ -16,7 +16,7 @@ interface Toast {
   updateDuration: (duration: number) => void;
 }
 
-const noop = () => {};
+const noop = () => { };
 
 const defaultValue: Toast = {
   isShow: false,
@@ -29,10 +29,10 @@ const defaultValue: Toast = {
 };
 export const ToastContext = createContext(defaultValue);
 
-type ShowToast = { type: "SHOW_TOAST" };
-type HideToast = { type: "HIDE_TOAST" };
-type UpdateMessage = { type: "UPDATE_MESSAGE"; payload: string };
-type UpdateDuration = { type: "UPDATE_DURATION"; payload: number };
+type ShowToast = { type: "SHOW_TOAST"; };
+type HideToast = { type: "HIDE_TOAST"; };
+type UpdateMessage = { type: "UPDATE_MESSAGE"; payload: string; };
+type UpdateDuration = { type: "UPDATE_DURATION"; payload: number; };
 
 type ToastActions = ShowToast | HideToast | UpdateMessage | UpdateDuration;
 
@@ -63,7 +63,6 @@ export const ToastProvider: React.FC = ({ children }) => {
     message: "",
     duration: 5000,
   });
-  console.log(state);
 
   const showToast = () => {
     dispatch({ type: "SHOW_TOAST" });

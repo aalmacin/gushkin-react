@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_WISH = gql`
-  mutation CreateWish($price: Int!, $description: String!, $priority: Priority!, $status: Status!, $source: String) {
+  mutation createWish($price: Int!, $description: String!, $priority: Priority!, $status: Status!, $source: String) {
     createWish(input: {
       price: $price
       description: $description
@@ -20,8 +20,8 @@ export const CREATE_WISH = gql`
 `;
 
 export const UPDATE_WISH = gql`
-  mutation UpdateWish($id: Int!, $price: Int, $description: String, $priority: Priority, $status: Status, $source: String) {
-    createWish(input: {
+  mutation updateWish($id: Int!, $price: Int, $description: String, $priority: Priority, $status: Status, $source: String) {
+    updateWish(input: {
       id: $id
       price: $price
       description: $description

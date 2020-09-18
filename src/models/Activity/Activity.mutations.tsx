@@ -1,4 +1,4 @@
-import { gql } from "@apollo/react-hooks"
+import { gql } from "@apollo/client";
 
 export const CreateActivity = gql`
   mutation CreateActivity($description: String!, $fundAmt: Int!, $positive: Boolean!) {
@@ -13,4 +13,4 @@ export const CreateActivity = gql`
           fundAmt
     }
   }
-`
+`;

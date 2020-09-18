@@ -1,4 +1,4 @@
-import { gql } from "@apollo/react-hooks"
+import { gql } from "@apollo/client";
 
 export const PerformActivity = gql`
   mutation PerformActivity($activityId: Int!) {
@@ -13,4 +13,4 @@ export const PerformActivity = gql`
         }
     }
   }
-`
+`;
