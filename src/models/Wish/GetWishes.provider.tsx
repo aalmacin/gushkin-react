@@ -13,7 +13,7 @@ const noop = () => { };
 
 export const GetWishesContext = createContext<GetWishesContextValues>({ wishes: [], refetch: noop });
 
-export const GetWishesProvider: React.FC = ({ children }) => {
+const GetWishesProvider: React.FC = ({ children }) => {
   const { data, refetch, loading, error } = useQuery(GetWishes);
   const wishes = (data && data.wishes) || [];
 

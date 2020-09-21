@@ -15,15 +15,15 @@ import Loading from "complib/Loading";
 import Modal from "complib/Modal";
 import FormClose from "pages/main/shared/FormClose";
 import HeaderIcon from "pages/main/shared/HeaderIcon";
-import { useGetWishes } from "models/Wish/useGetWishes";
 import useAddToCart from "graphql/Cart/useAddToCart";
 import useRemoveFromCart from "graphql/Cart/useRemoveFromCart";
 import Cart from "./Cart";
 import { StoreItem } from "./graphql/Store.types";
+import useGetStoreItems from "./graphql/useGetStoreItems";
 
 function Store() {
   const [isShowForm, setIsShowForm] = useState(false);
-  const { wishes: storeItems, loading } = useGetWishes();
+  const { storeItems, loading } = useGetStoreItems();
   const { addToCart } = useAddToCart();
   const { removeFromCart } = useRemoveFromCart();
 

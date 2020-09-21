@@ -9,7 +9,6 @@ import Button, { ButtonType } from "complib/Button";
 import { CREATE_WISH } from "models/Wish/Wish.mutations";
 import { CreateWishInput, Priority, Status } from "models/Wish/Wish.types";
 import ErrorList from "pages/error";
-import { useGetWishes } from "models/Wish/useGetWishes";
 import { useMutation } from "@apollo/client";
 
 interface WishFormProps {
@@ -17,10 +16,8 @@ interface WishFormProps {
 }
 
 const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
-  const { refetch } = useGetWishes();
   const [createWish] = useMutation(CREATE_WISH, {
     onCompleted: () => {
-      refetch();
       onCompleted();
     }
   });
