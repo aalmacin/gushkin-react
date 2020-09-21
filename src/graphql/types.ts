@@ -1,69 +1,141 @@
-export interface CreateWishInput {
-  description: string;
-  price: number;
-  source?: string;
+export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+/** All built-in and custom scalars, mapped to their actual values */
+export type Scalars = {
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
+  Time: any;
+};
+
+
+export type Activity = {
+  __typename?: 'Activity';
+  id: Scalars['ID'];
+  description: Scalars['String'];
+  positive: Scalars['Boolean'];
+  fundAmt: Scalars['Int'];
+  actions: Array<Maybe<Action>>;
+};
+
+export type Action = {
+  __typename?: 'Action';
+  id: Scalars['ID'];
+  actionTimestamp: Scalars['Time'];
+  activity: Activity;
+};
+
+export type ActionCount = {
+  __typename?: 'ActionCount';
+  activity: Activity;
+  count: Scalars['Int'];
+  day: Scalars['String'];
+};
+
+export type Wish = {
+  __typename?: 'Wish';
+  id: Scalars['ID'];
+  description: Scalars['String'];
+  price: Scalars['Int'];
+  source?: Maybe<Scalars['String']>;
+  priority: Scalars['String'];
+  status: Scalars['String'];
+};
+
+export type NewWishInput = {
+  description: Scalars['String'];
+  price: Scalars['Int'];
+  source?: Maybe<Scalars['String']>;
   priority: Priority;
   status: Status;
-}
+};
+
+export type UpdateWishInput = {
+  id: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  price?: Maybe<Scalars['Int']>;
+  source?: Maybe<Scalars['String']>;
+  priority?: Maybe<Priority>;
+  status?: Maybe<Status>;
+};
+
+export type NewActivityInput = {
+  description: Scalars['String'];
+  fundAmt: Scalars['Int'];
+  positive?: Maybe<Scalars['Boolean']>;
+};
+
+export type PerformActivityInput = {
+  activityId: Scalars['Int'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createWish: Wish;
+  updateWish: Wish;
+  createActivity: Activity;
+  performActivity: Action;
+};
+
+
+export type MutationCreateWishArgs = {
+  input: NewWishInput;
+};
+
+
+export type MutationUpdateWishArgs = {
+  input: UpdateWishInput;
+};
+
+
+export type MutationCreateActivityArgs = {
+  input: NewActivityInput;
+};
+
+
+export type MutationPerformActivityArgs = {
+  input: PerformActivityInput;
+};
 
 export enum Priority {
-  VERY_HIGH = "VERY_HIGH",
-  HIGH = "HIGH",
-  MEDIUM = "MEDIUM",
-  LOW = "LOW",
-  VERY_LOW = "VERY_LOW",
+  VeryHigh = 'VERY_HIGH',
+  High = 'HIGH',
+  Medium = 'MEDIUM',
+  Low = 'LOW',
+  VeryLow = 'VERY_LOW'
 }
+
+export type GetWishInput = {
+  filter?: Maybe<Scalars['String']>;
+};
+
+export type GetActionInput = {
+  today?: Maybe<Scalars['Boolean']>;
+};
+
+export type Query = {
+  __typename?: 'Query';
+  wishes: Array<Maybe<Wish>>;
+  activities: Array<Maybe<Activity>>;
+  actions: Array<Maybe<Action>>;
+  currentFunds: Scalars['Int'];
+  actionCount: Array<Maybe<ActionCount>>;
+};
+
+
+export type QueryWishesArgs = {
+  input?: Maybe<GetWishInput>;
+};
+
+
+export type QueryActionsArgs = {
+  input?: Maybe<GetActionInput>;
+};
 
 export enum Status {
-  bought = "bought",
-  not_bought = "not_bought",
-  disabled = "disabled",
-}
-
-export interface Wish {
-  readonly id: string;
-  readonly description: string;
-  readonly userId: string;
-  readonly price: number;
-  readonly source?: string;
-  readonly priority: string;
-  readonly status: string;
-}
-
-export interface ActivityInput {
-  description: string;
-  fundAmt: number;
-  positive: boolean;
-}
-
-export interface Activity {
-  readonly id: string;
-  readonly description: string;
-  readonly fundAmt: number;
-  readonly positive: boolean;
-  readonly userId: string;
-}
-
-export interface ActivityToday {
-  readonly activityId: number;
-  readonly description: string;
-  readonly fundAmt: number;
-  readonly positive: boolean;
-  readonly actionTimestamp: number;
-}
-
-export interface Action {
-  readonly id: number;
-  readonly activity: Activity;
-  readonly actionTimestamp: Date;
-}
-
-export interface PerformActivityInput {
-  activityId: number;
-}
-
-export interface ActionCount {
-  readonly activityId: number;
-  readonly count: number;
-  readonly day: string;
+  Bought = 'bought',
+  NotBought = 'not_bought',
+  Disabled = 'disabled'
 }

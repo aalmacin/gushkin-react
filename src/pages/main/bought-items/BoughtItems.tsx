@@ -4,8 +4,7 @@ import classes from "./BoughtItems.module.scss";
 import Loading from "complib/Loading";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import HeaderIcon from "pages/main/shared/HeaderIcon";
-import { Wish } from "models/Wish/Wish.types";
-import { StoreItem } from "models/Wish/GetWishes.provider";
+import { StoreItem } from "../store/graphql/Store.types";
 
 function BoughtItems() {
   // TODO: Add real pull

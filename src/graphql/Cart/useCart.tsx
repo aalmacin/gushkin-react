@@ -1,8 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
-import { Wish } from 'graphql/types';
+import { StoreItem } from 'pages/main/store/graphql/Store.types';
 
 export interface GetCartItemsResponse {
-  cart: Wish[];
+  cart: StoreItem[];
 }
 
 export const GET_CART_ITEMS = gql`

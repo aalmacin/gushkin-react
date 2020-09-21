@@ -8,8 +8,8 @@ import {
 import HeaderIcon from "pages/main/shared/HeaderIcon";
 import CartTotal from "./CartTotal";
 import CurrentFunds from "./CurrentFunds";
-import { StoreItem } from "models/Wish/GetWishes.provider";
 import { displayNormalMoney } from "functions/utils.functions";
+import { StoreItem } from "../graphql/Store.types";
 
 type CartProps = { cartItems: StoreItem[]; };
 

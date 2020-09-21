@@ -1,11 +1,11 @@
-import { Wish } from "models/Wish/Wish.types";
 import React, { createContext } from "react";
 import { GetWishes } from "models/Wish/Wish.queries";
 import { ApolloError, useQuery } from "@apollo/client";
+import { StoreItem } from "pages/main/store/graphql/Store.types";
 
 type Refetch = () => void;
 
-export type StoreItem = Partial<Wish & { readonly isInCart: boolean; readonly priceDisplay: string; }>;
+// export type StoreItem = Partial<Wish & { readonly isInCart: boolean; readonly priceDisplay: string; }>;
 
 type GetWishesContextValues = { wishes: StoreItem[], refetch: Refetch, loading?: boolean, error?: ApolloError; };
 

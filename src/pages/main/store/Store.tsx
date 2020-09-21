@@ -19,7 +19,7 @@ import { useGetWishes } from "models/Wish/useGetWishes";
 import useAddToCart from "graphql/Cart/useAddToCart";
 import useRemoveFromCart from "graphql/Cart/useRemoveFromCart";
 import Cart from "./Cart";
-import { StoreItem } from "models/Wish/GetWishes.provider";
+import { StoreItem } from "./graphql/Store.types";
 
 function Store() {
   const [isShowForm, setIsShowForm] = useState(false);

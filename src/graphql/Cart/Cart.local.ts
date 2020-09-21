@@ -1,5 +1,5 @@
 import { makeVar } from "@apollo/client";
-import { StoreItem } from "models/Wish/GetWishes.provider";
+import { StoreItem } from "pages/main/store/graphql/Store.types";
 
 export const cartReactiveVar = makeVar<StoreItem[]>([]);
 
