@@ -1,12 +1,12 @@
 import React from "react";
 import classes from "./ActivityList.module.scss";
 import { Activity } from "models/Activity/Activity.types";
-import Loading from "complib/Loading";
+import Loading from "components/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
-import { useToast } from "complib/Toast/useToast";
+import { useToast } from "components/Toast/useToast";
 import { useMutation } from "@apollo/client";
 import { PerformActivity } from "models/Action/Action.mutations";
 import { useGetActivities } from "models/Activity/useGetActivities";

@@ -3,9 +3,9 @@ import classes from "./WishForm.module.scss";
 
 
 import { MICRO_AMOUNT } from "functions/global.constants";
-import TextField from "complib/TextField";
-import NumberField from "complib/NumberField";
-import Button, { ButtonType } from "complib/Button";
+import TextField from "components/TextField";
+import NumberField from "components/NumberField";
+import Button, { ButtonType } from "components/Button";
 import { CREATE_WISH } from "models/Wish/Wish.mutations";
 import { CreateWishInput, Priority, Status } from "models/Wish/Wish.types";
 import ErrorList from "pages/error";

@@ -1,8 +1,8 @@
 import React from "react";
 
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
-import Loading from "complib/Loading";
-import Button, { ButtonType } from "complib/Button";
+import Loading from "components/Loading";
+import Button, { ButtonType } from "components/Button";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./BoughtItems.module.scss";
 
-import Loading from "complib/Loading";
+import Loading from "components/Loading";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import HeaderIcon from "pages/main/shared/HeaderIcon";
 import { StoreItem } from "../store/graphql/Store.types";

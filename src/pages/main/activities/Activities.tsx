@@ -1,9 +1,9 @@
 import classes from "./Activities.module.scss";
 import React, { useState } from "react";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import Modal from "complib/Modal";
+import Modal from "components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Loading from "complib/Loading";
+import Loading from "components/Loading";
 import ActivityForm from "./activity-form";
 import { useGetActivities } from "models/Activity/useGetActivities";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";

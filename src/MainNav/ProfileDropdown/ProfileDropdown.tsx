@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classes from './ProfileDropdown.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp, faHistory } from '@fortawesome/free-solid-svg-icons'
-import IconLink from 'complib/IconLink';
+import IconLink from 'components/IconLink';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from 'authentication/LoginButton';
 import LogoutButton from 'authentication/LogoutButton';

@@ -1,4 +1,4 @@
-import InputField from "complib/InputField";
+import InputField from "components/InputField";
 import React from "react";
 
 interface TextFieldProps {

@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./FormClose.module.scss";
-import Button, { ButtonType } from "complib/Button";
+import Button, { ButtonType } from "components/Button";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface FormCloseProps {

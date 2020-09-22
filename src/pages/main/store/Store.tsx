@@ -10,9 +10,9 @@ import {
   faStore,
   faPlus
 } from "@fortawesome/free-solid-svg-icons";
-import Button, { ButtonType } from "complib/Button";
-import Loading from "complib/Loading";
-import Modal from "complib/Modal";
+import Button, { ButtonType } from "components/Button";
+import Loading from "components/Loading";
+import Modal from "components/Modal";
 import FormClose from "pages/main/shared/FormClose";
 import HeaderIcon from "pages/main/shared/HeaderIcon";
 import useAddToCart from "graphql/cart/useAddToCart";

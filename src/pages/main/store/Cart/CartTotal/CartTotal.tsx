@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./CartTotal.module.scss";
-import Button, { ButtonType } from "complib/Button";
+import Button, { ButtonType } from "components/Button";
 
 type CartProps = { cartTotal: number, onCheckout: () => void; };
 

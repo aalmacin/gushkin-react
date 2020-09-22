@@ -7,7 +7,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import config from "./auth_config.json";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "apollo-client";
-import { ToastProvider } from "complib/Toast/ToastProvider";
+import { ToastProvider } from "components/Toast/ToastProvider";
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>

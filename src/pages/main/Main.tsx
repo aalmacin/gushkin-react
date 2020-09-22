@@ -3,7 +3,7 @@ import classes from './Main.module.scss';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 
 
-import Loading from 'complib/Loading';
+import Loading from 'components/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Store = React.lazy(() => import('./store/Store'));

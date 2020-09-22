@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import classes from "./ActivityForm.module.scss";
 import { MICRO_AMOUNT } from "functions/global.constants";
-import Button, { ButtonType } from "complib/Button";
-import TextField from "complib/TextField";
-import NumberField from "complib/NumberField";
+import Button, { ButtonType } from "components/Button";
+import TextField from "components/TextField";
+import NumberField from "components/NumberField";
 import FormClose from "pages/main/shared/FormClose";
-import Loading from "complib/Loading";
+import Loading from "components/Loading";
 import { CreateActivity } from "models/Activity/Activity.mutations";
 import { ActivityInput } from "models/Activity/Activity.types";
 import ErrorList from "pages/error";
 import { useMutation } from "@apollo/client";
-import { useToast } from "complib/Toast/useToast";
+import { useToast } from "components/Toast/useToast";
 import { GetActivities } from "models/Activity/Activity.queries";
 
 interface ActivityFormProps {
