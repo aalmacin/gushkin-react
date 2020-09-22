@@ -1,6 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { Activity, Maybe } from 'graphql/types';
-import { RemoveMaybe } from 'graphql/utils';
+import { GetActivitiesResponse } from './Activity.local';
 
 export const GET_ACTIVITIES = gql`
   query getActivities {
@@ -22,12 +21,6 @@ export const GET_ACTIVITIES = gql`
     }
   }
 `;
-
-type ActivityItem = RemoveMaybe<Activity>;
-
-type GetActivitiesResponse = {
-  activities: ActivityItem[];
-};
 
 export const useGetActivities = () => {
   const { data, ...rest } = useQuery<GetActivitiesResponse>(GET_ACTIVITIES);
