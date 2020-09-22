@@ -14,6 +14,7 @@ const Home = React.lazy(() => import("./pages/home/Home"));
 
 function App() {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+
   useEffect(() => {
     if (isAuthenticated) {
       getAccessTokenSilently().then((accessToken) => {
