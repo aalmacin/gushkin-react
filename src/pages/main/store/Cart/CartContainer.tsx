@@ -1,7 +1,7 @@
 
 import React from "react";
 
-import useCartQuery from "graphql/Cart/useCart";
+import useCartQuery from "graphql/cart/useCart";
 import Cart from "./Cart";
 
 const CartContainer: React.FC = () => {

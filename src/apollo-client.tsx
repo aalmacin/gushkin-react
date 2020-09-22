@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, HttpLink, ApolloLink, concat } from "@apollo/client";
 import { displayNormalMoney } from "functions/utils.functions";
-import { cartReactiveVar } from "graphql/Cart/Cart.local";
-import { GetCartItemsResponse, GET_CART_ITEMS } from "graphql/Cart/useCart";
+import { cartReactiveVar } from "graphql/cart/Cart.local";
+import { GetCartItemsResponse, GET_CART_ITEMS } from "graphql/cart/useCart";
 
 const httpLink = new HttpLink({
   uri: process.env.REACT_APP_GRAPHQL_PATH,
