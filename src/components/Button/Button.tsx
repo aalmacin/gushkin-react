@@ -18,25 +18,64 @@ interface ButtonProps {
   type: ButtonType;
 }
 
-const getBackgroundColor = (type: string, hover = false) => {
-  switch (type) {
-    case ButtonType.primary:
-      return hover ? colors.primary.shade4 : colors.primary.shade3;
-  }
-};
-
-const getTextColor = (type: string, hover = false) => {
-  switch (type) {
-    case ButtonType.primary:
-      return hover ? colors.primary.tint9 : colors.white;
-  }
-};
-
-const getBorderColor = (type: string, hover = false) => {
-  switch (type) {
-    case ButtonType.primary:
-      return colors.primary.tint9;
-  }
+const getColors = (type: ButtonType) => {
+  const buttonColors = {
+    [ButtonType.primary]: {
+      backgroundColor: colors.primary.shade3,
+      textColor: colors.white.base,
+      borderColor: colors.primary.tint9,
+      hover: {
+        backgroundColor: colors.primary.shade4,
+        textColor: colors.primary.tint9,
+      }
+    },
+    [ButtonType.secondary]: {
+      backgroundColor: colors.secondary.shade3,
+      textColor: colors.white.base,
+      borderColor: colors.secondary.tint9,
+      hover: {
+        backgroundColor: colors.secondary.shade4,
+        textColor: colors.secondary.tint9,
+      }
+    },
+    [ButtonType.error]: {
+      backgroundColor: colors.error.tint4,
+      textColor: colors.white.base,
+      borderColor: colors.error.tint9,
+      hover: {
+        backgroundColor: colors.error.tint3,
+        textColor: colors.error.tint9,
+      }
+    },
+    [ButtonType.gold]: {
+      backgroundColor: colors.gold.tint3,
+      textColor: colors.black.base,
+      borderColor: colors.gold.shade9,
+      hover: {
+        backgroundColor: colors.gold.tint4,
+        textColor: colors.gold.shade9,
+      }
+    },
+    [ButtonType.icon]: {
+      backgroundColor: "transparent",
+      textColor: colors.black.base,
+      borderColor: "transparent",
+      hover: {
+        backgroundColor: "transparent",
+        textColor: colors.error.shade9,
+      }
+    },
+    [ButtonType.red]: {
+      backgroundColor: colors.red.tint3,
+      textColor: colors.black.base,
+      borderColor: colors.red.tint4,
+      hover: {
+        backgroundColor: colors.red.tint4,
+        textColor: colors.red.shade9,
+      }
+    },
+  };
+  return buttonColors[type];
 };
 
 const useStyle = createUseStyles({
@@ -51,19 +90,18 @@ const useStyle = createUseStyles({
     cursor: "pointer",
     borderRadius: ({ isSquare }) => isSquare ? "0" : "2rem",
 
-    backgroundColor: ({ type }) => getBackgroundColor(type),
-    color: ({ type }) => getTextColor(type),
-    border: ({ type }) => `1px solid ${getBorderColor(type)}`,
+    backgroundColor: ({ type }) => getColors(type).backgroundColor,
+    color: ({ type }) => getColors(type).textColor,
+    border: ({ type }) => `1px solid ${getColors(type).borderColor}`,
 
     "&:hover": {
-      backgroundColor: ({ type }) => getBackgroundColor(type, true),
-      color: ({ type }) => getTextColor(type, true),
-      border: ({ type }) => `1px solid ${getBorderColor(type, true)}`,
+      backgroundColor: ({ type }) => getColors(type).hover.backgroundColor,
+      color: ({ type }) => getColors(type).hover.textColor,
     },
   },
   Icon: {
     backgroundColor: "transparent",
-    color: colors.black,
+    textColor: ({ type }) => getColors(type).textColor,
     border: "none",
 
     "&:hover": {
