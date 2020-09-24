@@ -1,4 +1,4 @@
-import { Activity } from "models/Activity/Activity.types";
+import { Activity } from "graphql/types";
 
 export interface Action {
   readonly id: number,
@@ -7,7 +7,7 @@ export interface Action {
 }
 
 export interface PerformActivityInput {
-  activityId: number
+  activityId: number;
 }
 
 export interface ActionCount {

@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./ActivityList.module.scss";
-import { Activity } from "models/Activity/Activity.types";
 import Loading from "components/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +8,7 @@ import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { useToast } from "components/Toast/useToast";
 import { useMutation } from "@apollo/client";
 import { PerformActivity } from "models/Action/Action.mutations";
-import { useGetActivities } from "models/Activity/useGetActivities";
+import { useGetActivities } from "../graphql/useGetActivities";
 
 export default function ActivityList() {
   const { activities, loading } = useGetActivities();
@@ -42,7 +41,7 @@ export default function ActivityList() {
 
   return (
     <ul className={classes.ActivityList}>
-      {activities.map((activity: Activity) => (
+      {activities.map((activity) => (
         <li key={activity.id} className={classes.Activity}>
           <div className={classes.Action}>
             {isActivitiesActionLoading ? (

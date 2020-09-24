@@ -6,32 +6,26 @@ import TextField from "components/TextField";
 import NumberField from "components/NumberField";
 import FormClose from "pages/main/shared/FormClose";
 import Loading from "components/Loading";
-import { CreateActivity } from "models/Activity/Activity.mutations";
-import { ActivityInput } from "models/Activity/Activity.types";
 import ErrorList from "pages/error";
-import { useMutation } from "@apollo/client";
 import { useToast } from "components/Toast/useToast";
-import { GetActivities } from "models/Activity/Activity.queries";
+import useCreateActivity from "graphql/activity/useCreateActivity";
+import { ActivityItem } from "../graphql/Activity.local";
 
 interface ActivityFormProps {
   closeHandler: () => void;
 }
+
+type ActivityForm = Omit<ActivityItem, "actions" | "id">;
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
   // const { refetch } = useGetActivities();
 
   const { showToast } = useToast();
 
-  const [createActivity] = useMutation(CreateActivity, {
+  const { createActivity } = useCreateActivity({
     onCompleted: () => {
-      // refetch();
       closeHandler();
       showToast("Successfully created Activity", 3000);
-    },
-    update: (cache, response) => {
-      const currentData = cache.readQuery<any>({ query: GetActivities });
-      const updated = [...currentData.activities, response.data.createActivity];
-      cache.writeQuery({ query: GetActivities, data: { activities: updated } });
     }
   });
 
@@ -40,7 +34,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
     fundAmt: 0,
     positive: true,
   };
-  const [activity, setActivity] = useState<ActivityInput>(initialFormState);
+  const [activity, setActivity] = useState<ActivityForm>(initialFormState);
 
   const [errors, setErrors] = useState<string[]>([]);
 
