@@ -7,7 +7,7 @@ import Loading from 'components/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Store = React.lazy(() => import('./store/Store'));
-const BoughtItems = React.lazy(() => import('./bought-items/BoughtItems'));
+const BoughtItems = React.lazy(() => import('./boughtItems/BoughtItems'));
 const Activities = React.lazy(() => import('./activities/Activities'));
 
 function Main() {

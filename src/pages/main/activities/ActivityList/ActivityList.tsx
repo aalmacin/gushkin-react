@@ -1,71 +1,40 @@
 import React from "react";
-import classes from "./ActivityList.module.scss";
-import Loading from "components/Loading";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
-import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
-import { useToast } from "components/Toast/useToast";
-import { useMutation } from "@apollo/client";
-import { PerformActivity } from "models/Action/Action.mutations";
-import { useGetActivities } from "../graphql/useGetActivities";
+import { ActivityItem } from "../graphql/Activity.local";
+import ActivityListItem from "./activityListItem";
+import { createUseStyles } from 'react-jss';
 
-export default function ActivityList() {
-  const { activities, loading } = useGetActivities();
-  const isActivitiesActionLoading = false;
+const useStyles = createUseStyles({
+  ActivityList: {
+    padding: 26,
+    paddingTop: 32,
 
-  const { refetch: refetchTodaysActions } = useGetTodaysActions();
-
-  const { refetch: refetchCurrentFunds } = useGetCurrentFunds();
-  const { showToast } = useToast();
-  const [performActivity] = useMutation(PerformActivity, {
-    onCompleted: () => {
-      refetchTodaysActions();
-      refetchCurrentFunds();
-      showToast("Performed activity", 3000);
-    },
-  });
-
-  const addActivity = (activityId: string) => () => {
-    performActivity({
-      variables: {
-        activityId: parseInt(`${activityId}`),
-      },
-    });
-  };
-
-
-  if (loading) {
-    return null;
+  },
+  Activity: {
+    listStyle: "none",
+    "&:not(:first-child)": {
+      marginTop: 32
+    }
   }
+});
 
+type AddActivityFunc = (a: string) => () => void;
+
+interface ActivityListProps {
+  activities: ActivityItem[];
+  addActivity: AddActivityFunc;
+}
+
+const ActivityList: React.FC<ActivityListProps> = ({ activities, addActivity }) => {
+  const classes = useStyles();
   return (
     <ul className={classes.ActivityList}>
       {activities.map((activity) => (
         <li key={activity.id} className={classes.Activity}>
-          <div className={classes.Action}>
-            {isActivitiesActionLoading ? (
-              <Loading />
-            ) : (
-                <button
-                  className={`${classes.PerformActivityButton} ${activity.positive
-                    ? classes.PerformActivityButtonGreen
-                    : classes.PerformActivityButtonRed
-                    }`}
-                  onClick={addActivity(activity.id)}
-                >
-                  <FontAwesomeIcon icon={activity.positive ? faPlus : faMinus} />
-                </button>
-              )}
-            <span className={classes.ActivityText}>
-              {activity.description}{" "}
-              <span className={classes.ActivityAmt}>
-                (${activity.fundAmt})
-              </span>
-            </span>
-          </div>
+          <ActivityListItem activity={activity} onActivityButtonClick={addActivity(activity.id)} />
         </li>
       ))}
     </ul>
   );
-}
+};
+
+export default ActivityList;

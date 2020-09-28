@@ -4,7 +4,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Modal from "components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "components/Loading";
-import ActivityForm from "./activity-form";
+import ActivityForm from "./activityForm";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
 import { Link } from "react-router-dom";

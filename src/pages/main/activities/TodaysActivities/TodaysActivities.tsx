@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { faListAlt } from "@fortawesome/free-solid-svg-icons";
 import Loading from "components/Loading";
 import { getNumberFromMicroAmount } from "functions/utils.functions";
-import HeaderIcon from "pages/main/shared/HeaderIcon";
+import HeaderIcon from "pages/main/components/headerIcon";
 import classes from "./TodaysActivities.module.scss";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import moment from 'moment-timezone';

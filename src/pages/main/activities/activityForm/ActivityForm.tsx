@@ -4,11 +4,11 @@ import { MICRO_AMOUNT } from "functions/global.constants";
 import Button, { ButtonType } from "components/Button";
 import TextField from "components/TextField";
 import NumberField from "components/NumberField";
-import FormClose from "pages/main/shared/FormClose";
+import FormClose from "pages/main/components/formClose";
 import Loading from "components/Loading";
 import ErrorList from "pages/error";
 import { useToast } from "components/Toast/useToast";
-import useCreateActivity from "graphql/activity/useCreateActivity";
+import useCreateActivity from "pages/main/activities/graphql/useCreateActivity";
 import { ActivityItem } from "../graphql/Activity.local";
 
 interface ActivityFormProps {

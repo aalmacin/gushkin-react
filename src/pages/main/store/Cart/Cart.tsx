@@ -5,7 +5,7 @@ import classes from "./Cart.module.scss";
 import {
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
-import HeaderIcon from "pages/main/shared/HeaderIcon";
+import HeaderIcon from "pages/main/components/headerIcon";
 import CartTotal from "./CartTotal";
 import CurrentFunds from "./CurrentFunds";
 import { displayNormalMoney } from "functions/utils.functions";

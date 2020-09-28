@@ -1,1 +1,1 @@
-export { default } from "./ActivityList";
+export { default } from "./ActivityListContainer";

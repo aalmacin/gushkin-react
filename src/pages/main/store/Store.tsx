@@ -13,8 +13,8 @@ import {
 import Button, { ButtonType } from "components/Button";
 import Loading from "components/Loading";
 import Modal from "components/Modal";
-import FormClose from "pages/main/shared/FormClose";
-import HeaderIcon from "pages/main/shared/HeaderIcon";
+import FormClose from "pages/main/components/formClose";
+import HeaderIcon from "pages/main/components/headerIcon";
 import useAddToCart from "graphql/cart/useAddToCart";
 import useRemoveFromCart from "graphql/cart/useRemoveFromCart";
 import Cart from "./Cart";

@@ -4,8 +4,8 @@ import classes from "./CurrentFunds.module.scss";
 import {
   faCoins
 } from "@fortawesome/free-solid-svg-icons";
-import Funds from "pages/main/shared/Funds";
-import HeaderIcon from "pages/main/shared/HeaderIcon";
+import Funds from "pages/main/components/funds";
+import HeaderIcon from "pages/main/components/headerIcon";
 
 const CurrentFunds = () => {
   return (

@@ -3,7 +3,7 @@ import classes from "./BoughtItems.module.scss";
 
 import Loading from "components/Loading";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import HeaderIcon from "pages/main/shared/HeaderIcon";
+import HeaderIcon from "pages/main/components/headerIcon";
 import { StoreItem } from "../store/graphql/Store.types";
 
 function BoughtItems() {
