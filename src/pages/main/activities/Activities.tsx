@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "components/Loading";
 import ActivityForm from "./activityForm";
 import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
-import { useGetCurrentFunds } from "models/Funds/useGetCurrentFunds";
+import { useGetCurrentFunds } from "pages/main/activities/graphql/useGetCurrentFunds";
 import { Link } from "react-router-dom";
 import ActivityList from "./ActivityList";
 import { useGetActivities } from "./graphql/useGetActivities";

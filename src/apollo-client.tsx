@@ -23,6 +23,14 @@ export const apolloClient = new ApolloClient({
     typePolicies: {
       Query: {
         fields: {
+          currentFunds: {
+            read: (val) => {
+              if (val) {
+                return displayNormalMoney(val);
+              }
+              return val;
+            }
+          },
           cart: {
             read: () => {
               return cartReactiveVar();
