@@ -5,7 +5,6 @@ import MainNav from "MainNav";
 import Loading from "components/Loading";
 import Helmet from "react-helmet";
 import { useAuth0 } from "@auth0/auth0-react";
-import { ModelProvider } from "models/ModelProvider";
 import SideNav from "SideNav";
 import { useToast } from "components/Toast/useToast";
 
@@ -37,9 +36,7 @@ function App() {
             <Switch>
               <Route path="/main">
                 <Suspense fallback={<Loading />}>
-                  <ModelProvider>
-                    <Main />
-                  </ModelProvider>
+                  <Main />
                 </Suspense>
               </Route>
               <Route path="/">

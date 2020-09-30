@@ -4,9 +4,9 @@ import Loading from "components/Loading";
 import { getNumberFromMicroAmount } from "functions/utils.functions";
 import HeaderIcon from "pages/main/components/headerIcon";
 import classes from "./TodaysActivities.module.scss";
-import { useGetTodaysActions } from "models/Action/useGetTodaysActions";
 import moment from 'moment-timezone';
-import { Action } from "models/Action/Action.types";
+import { useGetTodaysActions } from "graphql/action/useGetTodaysActions";
+import { Action } from "graphql/action/Action.types";
 
 const getTotalFundChanges = (actions: Action[]) => {
   return actions.reduce((acc, curr) => {

@@ -6,29 +6,18 @@ import { MICRO_AMOUNT } from "functions/global.constants";
 import TextField from "components/TextField";
 import NumberField from "components/NumberField";
 import Button, { ButtonType } from "components/Button";
-import { CREATE_WISH } from "models/Wish/Wish.mutations";
-import { CreateWishInput, Priority, Status } from "models/Wish/Wish.types";
 import ErrorList from "pages/error";
-import { useMutation } from "@apollo/client";
+import { useWishFormUILogic } from "./useWishFormUILogic";
+import { Priority, Status } from "./graphql/useCreateWish";
 
 interface WishFormProps {
   onCompleted: Function;
 }
 
 const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
-  const [createWish] = useMutation(CREATE_WISH, {
-    onCompleted: () => {
-      onCompleted();
-    }
-  });
 
-  const [wish, setWish] = useState<CreateWishInput>({
-    description: "",
-    price: 0,
-    source: "",
-    priority: Priority.VERY_HIGH,
-    status: Status.not_bought
-  });
+  const { wish, setWish, createWish } = useWishFormUILogic({ onCompleted });
+
 
   const [errors, setErrors] = useState<string[]>([]);
 

@@ -1,11 +1,11 @@
-import { ActionCount } from "models/Action/Action.types";
+import { ActionCount } from "graphql/action/Action.types";
 import React from "react";
 import classes from "./Streaks.module.scss";
 
 
 interface StreaksProps {
   readonly positive: boolean,
-  activityStreaks: ActionCount[]
+  activityStreaks: ActionCount[];
 }
 
 const Streaks: React.FC<StreaksProps> = ({ positive, activityStreaks }) => {
@@ -15,7 +15,7 @@ const Streaks: React.FC<StreaksProps> = ({ positive, activityStreaks }) => {
     } else {
       return count > 0 ? classes.Negative : classes.Positive;
     }
-  }
+  };
 
   return (
     <div className={classes.ActivityStreak}>
@@ -35,7 +35,7 @@ const Streaks: React.FC<StreaksProps> = ({ positive, activityStreaks }) => {
         }
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Streaks;
