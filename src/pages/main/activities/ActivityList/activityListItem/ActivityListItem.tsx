@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 32,
-    lineHeight: 44,
+    lineHeight: '44px',
     color: "#21262d",
   },
   ActivityText: {
@@ -34,7 +34,7 @@ const ActivityListItem: React.FC<ActivityListItemProps> = ({ activity, onActivit
       <span className={classes.ActivityText}>
         {activity.description}{" "}
         <span className={classes.ActivityAmt}>
-          (${activity.fundAmt})
+          (${activity.fundAmtDisplay})
               </span>
       </span>
     </div>

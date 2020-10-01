@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
     fontWeight: "normal",
     fontSize: 24,
     padding: "0px 16px",
-    lineHeight: 61,
+    lineHeight: '61px',
     color: "#eff0ff",
 
     "&:hover": {

@@ -43,6 +43,17 @@ export const apolloClient = new ApolloClient({
           }
         }
       },
+      Activity: {
+        fields: {
+          fundAmtDisplay: (_, { readField }) => {
+            const fundAmt = readField<number>("fundAmt");
+            if (!fundAmt) {
+              return;
+            }
+            return displayNormalMoney(fundAmt);
+          }
+        }
+      },
       Wish: {
         fields: {
           priceDisplay: {

@@ -15,7 +15,7 @@ interface ActivityFormProps {
   closeHandler: () => void;
 }
 
-type ActivityForm = Omit<ActivityItem, "actions" | "id">;
+type ActivityForm = Omit<ActivityItem, "actions" | "id" | "fundAmtDisplay">;
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
   // const { refetch } = useGetActivities();

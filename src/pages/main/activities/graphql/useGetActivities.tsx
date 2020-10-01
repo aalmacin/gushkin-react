@@ -8,6 +8,7 @@ export const GET_ACTIVITIES = gql`
       description
       positive
       fundAmt
+      fundAmtDisplay @client
       actions {
         id
         actionTimestamp

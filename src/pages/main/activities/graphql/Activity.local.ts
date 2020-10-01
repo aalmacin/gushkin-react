@@ -1,7 +1,7 @@
 import { Activity } from "graphql/types";
-import { RemoveMaybe } from "graphql/utils";
+import { Compact, DeepRemoveMaybe } from "graphql/utils";
 
-export type ActivityItem = RemoveMaybe<Activity>;
+export type ActivityItem = Compact<DeepRemoveMaybe<Activity> & {fundAmtDisplay: number}>
 
 export type GetActivitiesResponse = {
   activities: ActivityItem[];
