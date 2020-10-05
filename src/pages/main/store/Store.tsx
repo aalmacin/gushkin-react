@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import classes from "./Store.module.scss";
 
 import WishForm from "./wish-form/WishForm";
 
@@ -13,9 +12,31 @@ import FormClose from "pages/main/components/formClose";
 import HeaderIcon from "pages/main/components/headerIcon";
 import Cart from "./Cart";
 import StoreItems from "./store/StoreItemsContainer";
+import { createUseStyles } from 'react-jss';
+
+const useClasses = createUseStyles({
+  Store: {
+    display: 'flex',
+    flexDirection: 'row',
+    '@media (max-width: 43rem)': {
+      flexDirection: 'column',
+    }
+  },
+  StoreItemSection: {
+    flex: 10,
+  },
+  Head: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  ButtonContainer: {
+    paddingRight: '1rem',
+  }
+});
 
 function Store() {
   const [isShowForm, setIsShowForm] = useState(false);
+  const classes = useClasses();
 
   const showForm = () => {
     setIsShowForm(!isShowForm);
