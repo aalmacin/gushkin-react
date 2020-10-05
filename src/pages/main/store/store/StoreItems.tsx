@@ -21,7 +21,7 @@ const StoreItems: React.FC<StoreItemsProps> = ({ storeItems }) => {
   return (
     <div className={classes.StoreItemList}>
       {storeItems.map((wish) => (
-        <StoreItem wish={wish} />
+        <StoreItem key={wish.id} wish={wish} />
       ))}
     </div>
   );
