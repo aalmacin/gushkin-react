@@ -3,40 +3,22 @@ import classes from "./Store.module.scss";
 
 import WishForm from "./wish-form/WishForm";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCartPlus,
-  faMinus,
   faStore,
   faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import Button, { ButtonType } from "components/Button";
-import Loading from "components/Loading";
 import Modal from "components/Modal";
 import FormClose from "pages/main/components/formClose";
 import HeaderIcon from "pages/main/components/headerIcon";
-import useAddToCart from "graphql/cart/useAddToCart";
-import useRemoveFromCart from "graphql/cart/useRemoveFromCart";
 import Cart from "./Cart";
-import { StoreItem } from "./graphql/Store.types";
-import useGetStoreItems from "./graphql/useGetStoreItems";
+import StoreItems from "./store/StoreItemsContainer";
 
 function Store() {
   const [isShowForm, setIsShowForm] = useState(false);
-  const { storeItems, loading } = useGetStoreItems();
-  const { addToCart } = useAddToCart();
-  const { removeFromCart } = useRemoveFromCart();
 
   const showForm = () => {
     setIsShowForm(!isShowForm);
-  };
-
-  const addItemToCart = (wish: StoreItem) => () => {
-    addToCart(wish);
-  };
-
-  const removeItemFromCart = (wish: StoreItem) => () => {
-    removeFromCart(wish);
   };
 
   const closeHandler = () => {
@@ -62,41 +44,7 @@ function Store() {
             />
           </div>
         </div>
-        {!loading ? (
-          <>
-            <div className={classes.StoreItemList}>
-              {storeItems.map((wish) => (
-                <div
-                  className={classes.Wish}
-                  key={wish.id}
-                  onClick={
-                    wish.isInCart
-                      ? removeItemFromCart(wish)
-                      : addItemToCart(wish)
-                  }
-                >
-                  <div className={classes.Description}>
-                    {wish.description}
-                  </div>
-                  <div className={classes.Price}>
-                    $ {wish.priceDisplay}
-                    {!wish.isInCart ? (
-                      <div className={classes.AddCart}>
-                        <FontAwesomeIcon icon={faCartPlus} />
-                      </div>
-                    ) : (
-                        <div className={classes.AddedCart}>
-                          <FontAwesomeIcon icon={faMinus} />
-                        </div>
-                      )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </>
-        ) : (
-            <Loading isLoading />
-          )}
+        <StoreItems />
       </div>
       <Cart />
     </div>
