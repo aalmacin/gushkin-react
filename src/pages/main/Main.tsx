@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import classes from './Main.module.scss';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 
-
 import Loading from 'components/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -12,9 +11,9 @@ const Activities = React.lazy(() => import('./activities/Activities'));
 
 function Main() {
   const match = useRouteMatch();
-  const { isAuthenticated, isLoading } = useAuth0()
+  const { isAuthenticated, isLoading } = useAuth0();
   if (!isLoading && !isAuthenticated) {
-    return <Redirect to="/" />
+    return <Redirect to="/" />;
   }
 
   return (
