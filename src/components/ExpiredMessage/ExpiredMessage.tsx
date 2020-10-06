@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
   }
 });
 
-interface ExpiredMessageProps {
+export interface ExpiredMessageProps {
   isExpired?: boolean;
 }
 

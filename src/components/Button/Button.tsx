@@ -12,7 +12,7 @@ export enum ButtonType {
   icon = "Icon",
 }
 
-interface ButtonProps {
+export interface ButtonProps {
   icon?: any;
   isSquare?: boolean;
   type: ButtonType;
