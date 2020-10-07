@@ -1,13 +1,18 @@
 import React from "react";
-import ExpiredMessage from "./ExpiredMessage";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
+import ExpiredMessage, { ExpiredMessageProps } from "./ExpiredMessage";
 import { BrowserRouter } from "react-router-dom";
+import { Meta, Story } from "@storybook/react/types-6-0";
 
 
 export default {
   title: "ExpiredMessage",
   component: ExpiredMessage,
-  decorators: [withKnobs]
-};
+  decorators: []
+} as Meta;
 
-export const Text = () => <BrowserRouter><ExpiredMessage isExpired={boolean('Is Expired', true)} /></BrowserRouter>;
+const Template: Story<ExpiredMessageProps> = ({ isExpired }) => <BrowserRouter><ExpiredMessage isExpired={isExpired} /></BrowserRouter>;
+
+export const Text = Template.bind({});
+Text.args = {
+  isExpired: true
+};

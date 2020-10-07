@@ -1,9 +1,21 @@
 module.exports = {
+  typescript: {
+    check: true,
+    checkOptions: {
+      typescript: require.resolve("typescript"),
+    },
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+    },
+  },
   stories: ["../src/**/*.stories.tsx"],
   addons: [
-    "@storybook/preset-create-react-app",
-    "@storybook/addon-actions",
     "@storybook/addon-links",
-    "@storybook/addon-knobs/register"
-  ]
+    "@storybook/addon-essentials",
+    "@storybook/preset-create-react-app",
+    "@storybook/addon-a11y",
+  ],
 };

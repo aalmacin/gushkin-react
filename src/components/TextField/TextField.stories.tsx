@@ -1,17 +1,20 @@
 import React from "react";
-import TextField from "./TextField";
-import { text, withKnobs } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
+import TextField, { TextFieldProps } from "./TextField";
+import { Meta, Story } from "@storybook/react/types-6-0";
 
 export default {
   title: "TextField",
   component: TextField,
-  decorators: [withKnobs]
-};
+  decorators: []
+} as Meta;
 
-export const NormalText = () => (
+const Template: Story<TextFieldProps> = ({ label }) => (
   <TextField
-    onChange={action("Changed")}
-    label={text("Message", "Hello World")}
+    label={label}
   />
 );
+
+export const Default = Template.bind({});
+Default.args = {
+  label: "Hello World"
+};

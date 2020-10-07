@@ -1,3 +1,4 @@
+import { Meta, Story } from "@storybook/react/types-6-0";
 import React from "react";
 import Modal from "./Modal";
 
@@ -5,10 +6,15 @@ export default {
   title: "Modal",
   component: Modal,
   decorators: []
-};
+} as Meta;
 
-export const Normal = () => (
+const Template: Story = ({ children }) => (
   <Modal>
-    <p>Hello Modal</p>
+    {children}
   </Modal>
 );
+
+export const Default = Template.bind({});
+Default.args = {
+  children: <p>Hello World</p>
+};

@@ -1,26 +1,19 @@
 import InputField from "components/InputField";
 import React from "react";
 
-interface NumberFieldProps {
+export interface NumberFieldProps {
   label: string;
-  placeholder?: string;
-  value?: number;
-  onChange: (e: any) => void;
 }
 
-const NumberField: React.FC<NumberFieldProps> = ({
+const NumberField: React.FC<React.HTMLProps<HTMLInputElement> & NumberFieldProps> = ({
   label,
-  placeholder = "",
-  onChange,
-  value = ""
+  ...props
 }) => {
   return (
     <InputField label={label}>
       <input
+        {...props}
         type="number"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
       />
     </InputField>
   );

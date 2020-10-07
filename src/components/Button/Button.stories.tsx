@@ -1,46 +1,42 @@
 import React from "react";
-import { action } from "@storybook/addon-actions";
-import { storiesOf } from '@storybook/react';
-import Button, { ButtonType } from "./Button";
-import { faCoffee, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import { withKnobs, optionsKnob as options, boolean } from "@storybook/addon-knobs";
-import cartesian from 'storybook-cartesian'
+import Button, { ButtonProps, ButtonType } from "./Button";
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 
 export default {
   title: "Button",
   component: Button,
-  decorators: [withKnobs]
+  decorators: [],
+  argTypes: {
+    icon: {
+      control: '-'
+    },
+    isSquare: {
+      control: 'boolean'
+    },
+    type: {
+      control: {
+        type: 'radio', options: [
+          ButtonType.primary,
+          ButtonType.secondary
+        ]
+      }
+    }
+  }
+} as Meta;
+
+const Template: Story<ButtonProps & { text?: string; }> = ({ isSquare, type, icon, text }) => <Button isSquare={isSquare} type={type} icon={icon}>{text}</Button>;
+
+export const TextOnly = Template.bind({});
+TextOnly.args = {
+  isSquare: false,
+  type: ButtonType.primary,
+  text: "Hello World"
 };
 
-const buttonTypeOptions = {
-  Primary: ButtonType.primary,
-  Secondary: ButtonType.secondary,
-  Error: ButtonType.error,
-  Gold: ButtonType.gold
-}
-
-export const Text = () => <Button onClick={() => { }} isSquare={boolean('Is Square', false)} type={options('Button Type', buttonTypeOptions, buttonTypeOptions.Primary, { display: 'inline-radio' })}>Hello Button</Button>;
-
-export const WithIcon = () => (
-  <Button icon={faCoffee} onClick={() => { }} isSquare={boolean('Is Square', false)} type={options('Button Type', buttonTypeOptions, buttonTypeOptions.Primary, { display: 'inline-radio' })}>
-    With Icons
-  </Button >
-);
-
-cartesian(storiesOf('Button/Cartesian', module))
-  .add<any>(() => ({
-    types: [
-      ButtonType.primary,
-      ButtonType.secondary,
-      ButtonType.error,
-      ButtonType.gold,
-    ],
-    icon: [faCoffee, faMinus, faPlus],
-    text: ['Click Me', '', '👨‍💻👨‍💻👨‍💻👨‍💻'],
-    isSquare: [true, false]
-  }),
-    props => <Button isSquare={props.isSquare} icon={props.icon} onClick={action('Clicked')} type={props.types}>
-      {props.text}
-    </Button>
-    , {})
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  ...TextOnly.args,
+  icon: faCoffee
+};
