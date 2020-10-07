@@ -1,7 +1,7 @@
 import React from "react";
 import ExpiredMessage, { ExpiredMessageProps } from "./ExpiredMessage";
 import { BrowserRouter } from "react-router-dom";
-import { Story } from "@storybook/react/types-6-0";
+import { Meta, Story } from "@storybook/react/types-6-0";
 
 
 export default {
@@ -13,3 +13,6 @@ export default {
 const Template: Story<ExpiredMessageProps> = ({ isExpired }) => <BrowserRouter><ExpiredMessage isExpired={isExpired} /></BrowserRouter>;
 
 export const Text = Template.bind({});
+Text.args = {
+  isExpired: true
+};

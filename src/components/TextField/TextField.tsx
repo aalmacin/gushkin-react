@@ -1,26 +1,19 @@
 import InputField from "components/InputField";
 import React from "react";
 
-interface TextFieldProps {
+export interface TextFieldProps {
   label: string;
-  placeholder?: string;
-  value?: string;
-  onChange: (e: any) => void;
 }
 
-const TextField: React.FC<TextFieldProps> = ({
+const TextField: React.FC<React.HTMLProps<HTMLInputElement> & TextFieldProps> = ({
   label,
-  placeholder = "",
-  onChange,
-  value = ""
+  ...props
 }) => {
   return (
     <InputField label={label}>
       <input
+        {...props}
         type="text"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
       />
     </InputField>
   );

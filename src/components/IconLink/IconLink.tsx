@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classes from "./IconLink.module.scss";
 import { Link } from "react-router-dom";
 
-interface IconLinkProps {
+export interface IconLinkProps {
   isExternal?: boolean,
   to: string,
   icon: any,

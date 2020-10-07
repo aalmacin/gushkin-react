@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classes from "./Loading.module.scss";
 
-interface LoadingProps {
+export interface LoadingProps {
   isLoading?: boolean;
 }
 

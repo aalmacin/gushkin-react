@@ -1,17 +1,19 @@
 import React from "react";
-import NumberField from "./NumberField";
-import { text, withKnobs } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
+import NumberField, { NumberFieldProps } from "./NumberField";
+import { Meta, Story } from "@storybook/react/types-6-0";
 
 export default {
   title: "NumberField",
   component: NumberField,
-  decorators: [withKnobs]
-};
+  decorators: []
+} as Meta;
 
-export const NormalText = () => (
+const Template: Story<NumberFieldProps> = ({ label }) =>
   <NumberField
-    onChange={action("Changed")}
-    label={text("Message", "Hello World")}
-  />
-);
+    label={label}
+  />;
+
+export const NormalText = Template.bind({});
+NormalText.args = {
+  label: "Hello World"
+};

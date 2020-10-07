@@ -1,14 +1,21 @@
 import React from "react";
-import { action } from "@storybook/addon-actions";
-import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons'
-import { withKnobs } from "@storybook/addon-knobs";
-import IconLink from "./IconLink";
+import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
+import IconLink, { IconLinkProps } from "./IconLink";
+import { Meta, Story } from "@storybook/react/types-6-0";
 
 
 export default {
   title: "Icon Link",
   component: IconLink,
-  decorators: [withKnobs]
-};
+  decorators: []
+} as Meta;
 
-export const Default = () => <IconLink onClick={action('Clicked icon link')} to="#" icon={faHandHoldingHeart} isExternal> Hello Icon Link</IconLink >;
+const Template: Story<IconLinkProps & { text: string; }> = ({ icon, isExternal, to, text }) => <IconLink to={to} icon={icon} isExternal={isExternal}>{text}</IconLink >;
+
+export const Default = Template.bind({});
+Default.args = {
+  icon: faHandHoldingHeart,
+  isExternal: true,
+  to: '#',
+  text: "Hello World"
+};

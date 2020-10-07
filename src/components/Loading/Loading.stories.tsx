@@ -1,11 +1,16 @@
+import { Meta, Story } from "@storybook/react/types-6-0";
 import React from "react";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
-import Loading from "./Loading";
+import Loading, { LoadingProps } from "./Loading";
 
 export default {
   title: "Loading",
   component: Loading,
-  decorators: [withKnobs]
-};
+  decorators: []
+} as Meta;
 
-export const Default = () => <Loading isLoading={boolean('Is Loading', true)} />;
+const Template: Story<LoadingProps> = ({ isLoading }) => <Loading isLoading={isLoading} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  isLoading: true
+};
