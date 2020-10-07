@@ -3,7 +3,7 @@ import { StoreItem as StoreItemType } from 'pages/main/store/graphql/Store.types
 import { Priority } from 'graphql/types';
 import { Status } from 'graphql/types';
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 const addToCart = jest.fn();
 const removeFromCart = jest.fn();
@@ -19,10 +19,10 @@ const wish: StoreItemType = {
 
 describe('StoreItem', () => {
   test('renders', () => {
-    render(<StoreItem wish={wish} addToCart={addToCart} removeFromCart={removeFromCart} />);
+    const { getByText, getByRole } = render(<StoreItem wish={wish} addToCart={addToCart} removeFromCart={removeFromCart} />);
 
-    screen.getByText(wish.description);
-    const wishItem = screen.getByRole("button");
+    getByText(wish.description);
+    const wishItem = getByRole("button");
     wishItem.click();
 
     expect(addToCart.mock.calls.length).toBe(1);
@@ -36,9 +36,9 @@ describe('StoreItem', () => {
       ...wish,
       isInCart: true
     };
-    render(<StoreItem wish={wishInCart} addToCart={addToCart} removeFromCart={removeFromCart} />);
+    const { getByRole } = render(<StoreItem wish={wishInCart} addToCart={addToCart} removeFromCart={removeFromCart} />);
 
-    const wishItem = screen.getByRole("button");
+    const wishItem = getByRole("button");
     wishItem.click();
 
     expect(addToCart.mock.calls.length).toBe(0);
