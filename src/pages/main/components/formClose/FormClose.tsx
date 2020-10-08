@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./FormClose.module.scss";
-import Button, { ButtonType } from "components/Button";
+import Button from "components/Button";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface FormCloseProps {
@@ -11,7 +11,7 @@ const FormClose: React.FC<FormCloseProps> = ({ onClose }) => {
   return (
     <div className={classes.FormClose}>
       <Button
-        type={ButtonType.secondary}
+        type="Secondary"
         onClick={onClose}
         icon={faTimes}
       />

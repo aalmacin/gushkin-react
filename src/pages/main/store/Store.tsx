@@ -6,7 +6,7 @@ import {
   faStore,
   faPlus
 } from "@fortawesome/free-solid-svg-icons";
-import Button, { ButtonType } from "components/Button";
+import Button from "components/Button";
 import Modal from "components/Modal";
 import FormClose from "pages/main/components/formClose";
 import HeaderIcon from "pages/main/components/headerIcon";
@@ -60,7 +60,7 @@ function Store() {
           <div className={classes.ButtonContainer}>
             <Button
               onClick={showForm}
-              type={ButtonType.secondary}
+              type="Secondary"
               icon={faPlus}
             />
           </div>

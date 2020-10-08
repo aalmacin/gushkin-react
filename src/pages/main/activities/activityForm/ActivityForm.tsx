@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./ActivityForm.module.scss";
 import { MICRO_AMOUNT } from "functions/global.constants";
-import Button, { ButtonType } from "components/Button";
+import Button from "components/Button";
 import TextField from "components/TextField";
 import NumberField from "components/NumberField";
 import FormClose from "pages/main/components/formClose";
@@ -126,7 +126,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
                 />
               </div>
               <div className={classes.ButtonContainer}>
-                <Button type={ButtonType.primary} onClick={submitFormHandler}>
+                <Button type="Primary" onClick={submitFormHandler}>
                   Submit
               </Button>
               </div>

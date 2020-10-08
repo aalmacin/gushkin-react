@@ -3,14 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createUseStyles } from "react-jss";
 import { colors } from "components/variables";
 
-export enum ButtonType {
-  primary = "Primary",
-  secondary = "Secondary",
-  error = "Error",
-  gold = "Gold",
-  red = "Red",
-  icon = "Icon",
-}
+export const BUTTON_TYPES = [
+  "Primary",
+  "Secondary",
+  "Error",
+  "Gold",
+  "Red",
+  "Icon"
+] as const;
+
+export type ButtonType = typeof BUTTON_TYPES[number];
 
 export interface ButtonProps {
   icon?: any;
@@ -20,7 +22,7 @@ export interface ButtonProps {
 
 const getColors = (type: ButtonType) => {
   const buttonColors = {
-    [ButtonType.primary]: {
+    Primary: {
       backgroundColor: colors.primary.shade3,
       textColor: colors.white.base,
       borderColor: colors.primary.tint9,
@@ -29,7 +31,7 @@ const getColors = (type: ButtonType) => {
         textColor: colors.primary.tint9,
       }
     },
-    [ButtonType.secondary]: {
+    Secondary: {
       backgroundColor: colors.secondary.shade3,
       textColor: colors.white.base,
       borderColor: colors.secondary.tint9,
@@ -38,7 +40,7 @@ const getColors = (type: ButtonType) => {
         textColor: colors.secondary.tint9,
       }
     },
-    [ButtonType.error]: {
+    Error: {
       backgroundColor: colors.error.tint4,
       textColor: colors.white.base,
       borderColor: colors.error.tint9,
@@ -47,7 +49,7 @@ const getColors = (type: ButtonType) => {
         textColor: colors.error.tint9,
       }
     },
-    [ButtonType.gold]: {
+    Gold: {
       backgroundColor: colors.gold.tint3,
       textColor: colors.black.base,
       borderColor: colors.gold.shade9,
@@ -56,7 +58,7 @@ const getColors = (type: ButtonType) => {
         textColor: colors.gold.shade9,
       }
     },
-    [ButtonType.icon]: {
+    Icon: {
       backgroundColor: "transparent",
       textColor: colors.black.base,
       borderColor: "transparent",
@@ -65,7 +67,7 @@ const getColors = (type: ButtonType) => {
         textColor: colors.error.shade9,
       }
     },
-    [ButtonType.red]: {
+    Red: {
       backgroundColor: colors.red.tint3,
       textColor: colors.black.base,
       borderColor: colors.red.tint4,

@@ -5,7 +5,7 @@ import classes from "./WishForm.module.scss";
 import { MICRO_AMOUNT } from "functions/global.constants";
 import TextField from "components/TextField";
 import NumberField from "components/NumberField";
-import Button, { ButtonType } from "components/Button";
+import Button from "components/Button";
 import ErrorList from "pages/error";
 import { useWishFormUILogic } from "./useWishFormUILogic";
 import { Priority, Status } from "./graphql/useCreateWish";
@@ -160,7 +160,7 @@ const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
         </div>
         <div>
           <Button
-            type={ButtonType.primary}
+            type="Primary"
             onClick={submitFormHandler}
           >
             Submit

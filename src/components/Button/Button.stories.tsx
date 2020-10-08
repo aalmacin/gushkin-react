@@ -1,5 +1,5 @@
 import React from "react";
-import Button, { ButtonProps, ButtonType } from "./Button";
+import Button, { ButtonProps, BUTTON_TYPES } from "./Button";
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,10 +17,7 @@ export default {
     },
     type: {
       control: {
-        type: 'radio', options: [
-          ButtonType.primary,
-          ButtonType.secondary
-        ]
+        type: 'radio', options: BUTTON_TYPES
       }
     }
   }
@@ -31,7 +28,7 @@ const Template: Story<ButtonProps & { text?: string; }> = ({ isSquare, type, ico
 export const TextOnly = Template.bind({});
 TextOnly.args = {
   isSquare: false,
-  type: ButtonType.primary,
+  type: 'Primary',
   text: "Hello World"
 };
 
