@@ -84,8 +84,8 @@ const StoreItem: React.FC<StoreItemProps> = ({ wish, addToCart, removeFromCart }
   const classes = useStyles();
 
   const wishOnClick = wish.isInCart
-    ? () => removeFromCart(wish)
-    : () => addToCart(wish);
+    ? removeFromCart(wish)
+    : addToCart(wish);
 
   return (
     <div
