@@ -1,6 +1,6 @@
 import React from "react";
-import { ActivityItem } from "../graphql/Activity.local";
-import ActivityListItem from "./activityListItem";
+import { ActivityItem } from "./graphql/Activity.local";
+import ActivityListItem from "./activityList/ActivityListItem";
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({

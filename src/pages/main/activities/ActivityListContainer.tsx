@@ -1,5 +1,5 @@
 import React from "react";
-import { useActivityListUILogic } from './useActivityListUILogic';
+import { useActivityListUILogic } from './activityList/useActivityListUILogic';
 import ActivityList from './ActivityList';
 
 export default function ActivityListContainer() {

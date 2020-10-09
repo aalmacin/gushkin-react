@@ -9,7 +9,7 @@ import Loading from "components/Loading";
 import ErrorList from "pages/error";
 import { useToast } from "components/Toast/useToast";
 import useCreateActivity from "pages/main/activities/graphql/useCreateActivity";
-import { ActivityItem } from "../graphql/Activity.local";
+import { ActivityItem } from "./graphql/Activity.local";
 
 interface ActivityFormProps {
   closeHandler: () => void;

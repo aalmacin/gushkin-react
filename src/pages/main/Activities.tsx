@@ -4,11 +4,11 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Modal from "components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "components/Loading";
-import ActivityForm from "./activities/activityForm";
 import { Link } from "react-router-dom";
-import ActivityList from "./activities/ActivityList";
+import ActivityList from "./activities/ActivityListContainer";
 import { useGetActivities } from "./activities/graphql/useGetActivities";
-import FundBar from "./activities/fundBar/FundBarContainer";
+import FundBar from "./activities/FundBarContainer";
+import ActivityForm from "./activities/ActivityForm";
 
 function Activities() {
   const { loading: activitiesLoading } = useGetActivities();
