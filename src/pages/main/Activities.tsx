@@ -4,26 +4,16 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Modal from "components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "components/Loading";
-import ActivityForm from "./activityForm";
-import { useGetCurrentFunds } from "pages/main/activities/graphql/useGetCurrentFunds";
+import ActivityForm from "./activities/activityForm";
 import { Link } from "react-router-dom";
-import ActivityList from "./ActivityList";
-import { useGetActivities } from "./graphql/useGetActivities";
-import { useGetTodaysActions } from "graphql/action/useGetTodaysActions";
+import ActivityList from "./activities/ActivityList";
+import { useGetActivities } from "./activities/graphql/useGetActivities";
+import FundBar from "./activities/fundBar/FundBarContainer";
 
 function Activities() {
   const { loading: activitiesLoading } = useGetActivities();
 
   const [isShowActivityForm, setShowActivityForm] = useState(false);
-  const { actions: todaysActions } = useGetTodaysActions();
-
-  const todaysFundChanges = todaysActions.reduce(
-    (acc, curr) =>
-      acc + curr.activity.fundAmt * (curr.activity.positive ? 1 : -1),
-    0
-  );
-
-  const { currentFunds } = useGetCurrentFunds();
 
   // TODO: Add real pull
   const isActivitiesLoaded = true;
@@ -42,10 +32,7 @@ function Activities() {
 
   return (
     <div className={classes.ActivityPage}>
-      <div className={classes.FundBar}>
-        <div>Fund Changes Today: ${todaysFundChanges}</div>
-        <div>Current Funds: ${currentFunds}</div>
-      </div>
+      <FundBar />
       <div className={classes.ActivityBody}>
         <div className={classes.ActivityNav}>
           <div className={classes.NavItems}>
