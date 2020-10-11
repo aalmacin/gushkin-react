@@ -35,7 +35,9 @@ const ActivityListButton: React.FC<ActivityListButtonProps & ButtonHTMLAttribute
       {...props}
       className={classes.PerformActivityButton}
     >
-      <FontAwesomeIcon icon={positive ? faPlus : faMinus} />
+      <span data-testid={positive ? 'positive' : 'negative'}>
+        <FontAwesomeIcon icon={positive ? faPlus : faMinus} />
+      </span>
     </button>
   );
 };

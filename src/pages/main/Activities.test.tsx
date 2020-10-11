@@ -49,7 +49,7 @@ const mocks: MockedResponse[] = [
 describe('Activities', () => {
   const history = createMemoryHistory();
   test('renders', async () => {
-    const { getByText, queryByText } = render(
+    const { getByText, queryByText, getByTestId } = render(
       <Router history={history}>
         <MockedProvider mocks={mocks} addTypename={false}>
           <Activities />
@@ -61,6 +61,7 @@ describe('Activities', () => {
       expect(getByText('Cocoa')).toBeInTheDocument();
       expect(getByText("($20.00)")).toBeInTheDocument();
       expect(queryByText(/20000000/)).not.toBeInTheDocument();
+      expect(getByTestId('positive')).toBeInTheDocument();
     });
   });
 });
