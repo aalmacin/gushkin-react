@@ -21,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test:coverage": "react-scripts test --watchAll=false --env=jest-environment-jsdom-sixteen --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6066",
     "build-storybook": "build-storybook"
