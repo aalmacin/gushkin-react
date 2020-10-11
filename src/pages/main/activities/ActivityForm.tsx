@@ -8,7 +8,7 @@ import FormClose from "pages/main/components/formClose";
 import Loading from "components/Loading";
 import ErrorList from "pages/error";
 import { useToast } from "components/Toast/useToast";
-import useCreateActivity from "pages/main/activities/graphql/useCreateActivity";
+import useCreateActivity from "pages/main/activities/useCreateActivity";
 import { ActivityItem } from "./graphql/Activity.local";
 
 interface ActivityFormProps {

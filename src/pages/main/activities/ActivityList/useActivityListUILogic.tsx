@@ -1,6 +1,6 @@
 import { useToast } from "components/Toast/useToast";
-import { useGetActivities } from "../graphql/useGetActivities";
-import { usePerformActivity } from './graphql/usePerformActivity';
+import { useGetActivities } from "../useGetActivities";
+import { usePerformActivity } from './usePerformActivity';
 
 export const useActivityListUILogic = () => {
   const { activities, loading } = useGetActivities();

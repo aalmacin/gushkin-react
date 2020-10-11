@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { GetActivitiesResponse } from './Activity.local';
+import { GetActivitiesResponse } from './graphql/Activity.local';
 
 export const GET_ACTIVITIES = gql`
   query getActivities {

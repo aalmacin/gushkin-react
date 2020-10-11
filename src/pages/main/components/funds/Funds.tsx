@@ -3,7 +3,7 @@ import React from "react";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import Loading from "components/Loading";
 import Button from "components/Button";
-import { useGetCurrentFunds } from "pages/main/activities/graphql/useGetCurrentFunds";
+import { useGetCurrentFunds } from "pages/main/activities/useGetCurrentFunds";
 
 
 const Funds: React.FC = () => {

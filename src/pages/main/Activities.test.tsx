@@ -2,11 +2,11 @@ import { render, waitFor } from '@testing-library/react';
 import React from 'react';
 import Activities from './Activities';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
-import { GET_ACTIVITIES } from './activities/graphql/useGetActivities';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { GET_ACTIONS } from 'graphql/action/useGetActions';
-import { GET_CURRENT_FUNDS } from './activities/graphql/useGetCurrentFunds';
+import { GET_ACTIVITIES } from './activities/useGetActivities';
+import { GET_CURRENT_FUNDS } from './activities/useGetCurrentFunds';
 
 const mocks: MockedResponse[] = [
   {

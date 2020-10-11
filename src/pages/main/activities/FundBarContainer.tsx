@@ -1,7 +1,7 @@
 import { useGetTodaysActions } from 'graphql/action/useGetTodaysActions';
 import React from 'react';
 import { FundBar } from './FundBar';
-import { useGetCurrentFunds } from './graphql/useGetCurrentFunds';
+import { useGetCurrentFunds } from './useGetCurrentFunds';
 
 const FundBarContainer = () => {
   const { actions: todaysActions } = useGetTodaysActions();

@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "components/Loading";
 import { Link } from "react-router-dom";
 import ActivityList from "./activities/ActivityListContainer";
-import { useGetActivities } from "./activities/graphql/useGetActivities";
 import FundBar from "./activities/FundBarContainer";
 import ActivityForm from "./activities/ActivityForm";
+import { useGetActivities } from "./activities/useGetActivities";
 
 function Activities() {
   const { loading: activitiesLoading } = useGetActivities();

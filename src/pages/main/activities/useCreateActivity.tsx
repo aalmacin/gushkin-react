@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { GetActivitiesResponse } from "pages/main/activities/graphql/Activity.local";
-import { GET_ACTIVITIES } from 'pages/main/activities/graphql/useGetActivities';
+import { GET_ACTIVITIES } from "./useGetActivities";
 
 export const CREATE_ACTIVITY = gql`
   mutation CreateActivity($description: String!, $fundAmt: Int!, $positive: Boolean!) {
