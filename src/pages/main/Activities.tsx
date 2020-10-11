@@ -49,7 +49,7 @@ function Activities() {
               </Modal>
             )}
             <button onClick={showActivityForm}>
-              <FontAwesomeIcon icon={faPlus} /> Create Activity
+              <FontAwesomeIcon icon={faPlus} /> <span>Create Activity</span>
             </button>
           </div>
         </div>

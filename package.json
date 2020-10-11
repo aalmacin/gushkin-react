@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6066",
     "build-storybook": "build-storybook"
@@ -44,15 +44,15 @@
     "@babel/core": "^7.11.0",
     "@storybook/addon-a11y": "^6.0.26",
     "@storybook/addon-actions": "^6.0.26",
+    "@storybook/addon-essentials": "^6.0.22",
     "@storybook/addon-links": "^6.0.26",
     "@storybook/cli": "^6.0.26",
+    "@storybook/node-logger": "^6.0.22",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.26",
-    "@storybook/addon-essentials": "^6.0.22",
-    "@storybook/node-logger": "^6.0.22",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/user-event": "^12.1.7",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
@@ -60,8 +60,9 @@
     "@types/react-helmet": "^6.1.0",
     "@types/react-router-dom": "^5.1.5",
     "babel-loader": "^8.1.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "node-sass": "^4.14.1",
     "storybook-cartesian": "^2.1.1",
-    "typescript": "~3.7.2"
+    "typescript": "^4.0.3"
   }
 }
