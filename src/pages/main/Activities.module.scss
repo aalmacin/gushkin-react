@@ -7,57 +7,5 @@
     border: 1px solid #667387;
     padding-top: 0;
 
-    .ActivityNav {
-      display: flex;
-      justify-content: space-between;
-      font-family: "Noto Sans";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 27px;
-
-      color: #767676;
-      border-bottom: 1px solid #667387;
-
-      padding: 16px 24px;
-
-      .NavItems {
-        display: flex;
-
-        a {
-          font-family: "Noto Sans";
-          font-style: normal;
-          font-weight: 500;
-          font-size: 20px;
-          line-height: 27px;
-          text-decoration: none;
-
-          color: #767676;
-
-          &:not(:first-child) {
-            margin-left: 20px;
-          }
-
-          &.ActiveNavItem {
-            font-weight: bold;
-          }
-        }
-      }
-
-      .CreateActivity {
-        button {
-          border: none;
-          background: none;
-          font-family: "Noto Sans";
-          font-style: normal;
-          font-weight: 500;
-          font-size: 20px;
-          line-height: 27px;
-
-          color: #404855;
-          cursor: pointer;
-        }
-      }
-    }
   }
 }

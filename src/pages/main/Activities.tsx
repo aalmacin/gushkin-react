@@ -1,30 +1,16 @@
 import classes from "./Activities.module.scss";
-import React, { useState } from "react";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import Modal from "components/Modal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 import Loading from "components/Loading";
-import { Link } from "react-router-dom";
 import ActivityList from "./activities/ActivityListContainer";
 import FundBar from "./activities/FundBarContainer";
-import ActivityForm from "./activities/ActivityForm";
 import { useGetActivities } from "./activities/useGetActivities";
+import ActivityNav from "./activities/ActivityNav";
 
 function Activities() {
   const { loading: activitiesLoading } = useGetActivities();
 
-  const [isShowActivityForm, setShowActivityForm] = useState(false);
-
   // TODO: Add real pull
   const isActivitiesLoaded = true;
-
-  const showActivityForm = () => {
-    setShowActivityForm(true);
-  };
-
-  const closeForm = () => {
-    setShowActivityForm(false);
-  };
 
   if (activitiesLoading) {
     return <Loading />;
@@ -34,25 +20,7 @@ function Activities() {
     <div className={classes.ActivityPage}>
       <FundBar />
       <div className={classes.ActivityBody}>
-        <div className={classes.ActivityNav}>
-          <div className={classes.NavItems}>
-            <Link className={classes.ActiveNavItem} to="/main/activities">
-              Home
-            </Link>
-            <Link to="/main/activities/today">Todays Activities</Link>
-            <Link to="/main/activities/streaks">Streaks</Link>
-          </div>
-          <div className={classes.CreateActivity}>
-            {isShowActivityForm && (
-              <Modal>
-                <ActivityForm closeHandler={closeForm} />
-              </Modal>
-            )}
-            <button onClick={showActivityForm}>
-              <FontAwesomeIcon icon={faPlus} /> <span>Create Activity</span>
-            </button>
-          </div>
-        </div>
+        <ActivityNav />
         {isActivitiesLoaded ? <ActivityList /> : <Loading isLoading />}
       </div>
     </div>

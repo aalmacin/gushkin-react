@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import classes from "./ActivityForm.module.scss";
 import { MICRO_AMOUNT } from "functions/global.constants";
 import Button from "components/Button";
 import TextField from "components/TextField";
@@ -9,7 +8,31 @@ import Loading from "components/Loading";
 import ErrorList from "pages/error";
 import { useToast } from "components/Toast/useToast";
 import useCreateActivity from "pages/main/activities/useCreateActivity";
-import { ActivityItem } from "./graphql/Activity.local";
+import { ActivityItem } from "../../graphql/Activity.local";
+import { createUseStyles } from "react-jss";
+
+const useClasses = createUseStyles({
+  ActivityForm: {},
+  FormContainer: {},
+  Head: {
+    textAlign: 'right',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    flexDirection: 'column',
+  },
+  Form: {
+    label: {
+      marginTop: '2rem',
+    },
+  },
+  FormGroup: {},
+  ButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+});
 
 interface ActivityFormProps {
   closeHandler: () => void;
@@ -18,8 +41,7 @@ interface ActivityFormProps {
 type ActivityForm = Omit<ActivityItem, "actions" | "id" | "fundAmtDisplay">;
 
 const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
-  // const { refetch } = useGetActivities();
-
+  const classes = useClasses();
   const { showToast } = useToast();
 
   const { createActivity } = useCreateActivity({
@@ -99,6 +121,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
           <Loading />
         ) : (
             <form
+              className={classes.Form}
               onSubmit={(e) => {
                 e.preventDefault();
               }}
