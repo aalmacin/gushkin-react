@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./InputField.module.scss";
 
-interface InputFieldProps {
+export type InputFieldProps = {
   label: string;
-}
+};
 
 const InputField: React.FC<InputFieldProps> = ({ label, children }) => {
   return (

@@ -5,7 +5,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 
 export default {
-  title: "Button",
+  title: "components/Button",
   component: Button,
   decorators: [],
   argTypes: {

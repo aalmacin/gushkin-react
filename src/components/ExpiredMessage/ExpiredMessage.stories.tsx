@@ -5,7 +5,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 
 
 export default {
-  title: "ExpiredMessage",
+  title: "components/ExpiredMessage",
   component: ExpiredMessage,
   decorators: []
 } as Meta;

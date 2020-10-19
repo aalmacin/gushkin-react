@@ -3,7 +3,7 @@ import TextField, { TextFieldProps } from "./TextField";
 import { Meta, Story } from "@storybook/react/types-6-0";
 
 export default {
-  title: "TextField",
+  title: "components/TextField",
   component: TextField,
   decorators: []
 } as Meta;

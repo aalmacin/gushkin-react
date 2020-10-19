@@ -12,10 +12,6 @@ $borderColor: getColor(gray, shade-3);
 
     .ArchiveItem,
     .ArchiveItemHeading {
-      display: flex;
-      justify-content: space-evenly;
-      border-bottom: 1px solid $borderColor;
-      padding: 2rem 0;
 
       p {
         flex: 1;

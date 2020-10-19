@@ -3,7 +3,7 @@ import React from "react";
 import Loading, { LoadingProps } from "./Loading";
 
 export default {
-  title: "Loading",
+  title: "components/Loading",
   component: Loading,
   decorators: []
 } as Meta;

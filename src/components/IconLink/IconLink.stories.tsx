@@ -5,7 +5,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 
 
 export default {
-  title: "Icon Link",
+  title: "components/Icon Link",
   component: IconLink,
   decorators: []
 } as Meta;

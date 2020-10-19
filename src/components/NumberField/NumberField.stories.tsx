@@ -3,7 +3,7 @@ import NumberField, { NumberFieldProps } from "./NumberField";
 import { Meta, Story } from "@storybook/react/types-6-0";
 
 export default {
-  title: "NumberField",
+  title: "components/NumberField",
   component: NumberField,
   decorators: []
 } as Meta;

@@ -3,7 +3,7 @@ import React from "react";
 import Modal from "./Modal";
 
 export default {
-  title: "Modal",
+  title: "components/Modal",
   component: Modal,
   decorators: []
 } as Meta;
