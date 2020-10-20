@@ -11,6 +11,7 @@ export default {
 const Template: Story<TextFieldProps> = ({ label }) => (
   <TextField
     label={label}
+    id="testing"
   />
 );
 

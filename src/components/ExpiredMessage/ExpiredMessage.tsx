@@ -8,7 +8,7 @@ const useStyles = createUseStyles({
     top: "1 %",
     left: "50 %",
     transform: "translateX(-50 %)",
-    backgroundColor: colors.gold.tint4,
+    backgroundColor: colors.gray.tint6,
     padding: "1rem 2rem",
     borderRadius: "1rem",
     color: colors.black.base,

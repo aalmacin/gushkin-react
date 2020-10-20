@@ -10,10 +10,11 @@ export default {
 
 const Template: Story<NumberFieldProps> = ({ label }) =>
   <NumberField
+    id="testing"
     label={label}
   />;
 
-export const NormalText = Template.bind({});
-NormalText.args = {
+export const NumberOnly = Template.bind({});
+NumberOnly.args = {
   label: "Hello World"
 };

@@ -23,36 +23,36 @@ export interface ButtonProps {
 const getColors = (type: ButtonType) => {
   const buttonColors = {
     Primary: {
-      backgroundColor: colors.primary.shade3,
+      backgroundColor: colors.primary.shade5,
       textColor: colors.white.base,
       borderColor: colors.primary.tint9,
       hover: {
-        backgroundColor: colors.primary.shade4,
+        backgroundColor: colors.primary.shade6,
         textColor: colors.primary.tint9,
       }
     },
     Secondary: {
-      backgroundColor: colors.secondary.shade3,
+      backgroundColor: colors.secondary.shade5,
       textColor: colors.white.base,
       borderColor: colors.secondary.tint9,
       hover: {
-        backgroundColor: colors.secondary.shade4,
+        backgroundColor: colors.secondary.shade6,
         textColor: colors.secondary.tint9,
       }
     },
     Error: {
-      backgroundColor: colors.error.tint4,
+      backgroundColor: colors.red.shade3,
       textColor: colors.white.base,
       borderColor: colors.error.tint9,
       hover: {
-        backgroundColor: colors.error.tint3,
+        backgroundColor: colors.red.shade4,
         textColor: colors.error.tint9,
       }
     },
     Gold: {
       backgroundColor: colors.gold.tint3,
       textColor: colors.black.base,
-      borderColor: colors.gold.shade9,
+      borderColor: colors.gold.shade3,
       hover: {
         backgroundColor: colors.gold.tint4,
         textColor: colors.gold.shade9,

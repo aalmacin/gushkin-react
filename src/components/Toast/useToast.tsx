@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import React from 'react';
-import Toast from './Toast';
+import Toast from './ToastContainer';
 import { ToastContext } from './ToastProvider';
 
 export const useToast = () => {
