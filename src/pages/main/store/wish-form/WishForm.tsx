@@ -113,6 +113,7 @@ const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
       <form onSubmit={e => e.preventDefault()}>
         <div>
           <TextField
+            id="wish-description"
             label="Description"
             value={wish.description}
             onChange={updateFormControl("description")}
@@ -120,6 +121,7 @@ const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
         </div>
         <div>
           <NumberField
+            id="wish-price"
             label="Price"
             value={wish.price}
             onChange={updateFormControl("price")}
@@ -127,6 +129,7 @@ const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
         </div>
         <div>
           <TextField
+            id="wish-source"
             label="Source"
             value={wish.source}
             onChange={updateFormControl("source")}

@@ -128,6 +128,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
             >
               <div className={classes.FormGroup}>
                 <TextField
+                  id="description"
                   label="Description"
                   value={activity.description}
                   onChange={updateFormControl("description")}
@@ -135,6 +136,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
               </div>
               <div className={classes.FormGroup}>
                 <NumberField
+                  id="description"
                   label="Fund Amount"
                   value={activity.fundAmt}
                   onChange={updateFormControl("fundAmt")}

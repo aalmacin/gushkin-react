@@ -1,4 +1,4 @@
-import InputField from "components/InputField";
+import InputField from "components/InputFieldWrapper";
 import React from "react";
 
 export interface NumberFieldProps {
