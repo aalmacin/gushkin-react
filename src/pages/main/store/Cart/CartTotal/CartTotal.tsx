@@ -8,7 +8,7 @@ const CartTotal: React.FC<CartProps> = ({ cartTotal, onCheckout }) => {
   return (
     <div className={classes.CartTotal}>
       <p>Cart Total: ${cartTotal}</p>
-      <Button type="Primary" onClick={onCheckout}>
+      <Button kind="Primary" onClick={onCheckout}>
         Checkout
       </Button>
     </div>

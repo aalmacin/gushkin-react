@@ -11,7 +11,7 @@ const FormClose: React.FC<FormCloseProps> = ({ onClose }) => {
   return (
     <div className={classes.FormClose}>
       <Button
-        type="Secondary"
+        kind="Secondary"
         onClick={onClose}
         icon={faTimes}
       />

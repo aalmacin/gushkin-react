@@ -151,7 +151,7 @@ const ActivityForm: React.FC<ActivityFormProps> = ({ closeHandler }) => {
                 />
               </div>
               <div className={classes.ButtonContainer}>
-                <Button type="Primary" onClick={submitFormHandler}>
+                <Button kind="Primary" onClick={submitFormHandler}>
                   Submit
               </Button>
               </div>

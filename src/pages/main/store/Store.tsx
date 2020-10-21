@@ -60,7 +60,7 @@ function Store() {
           <div className={classes.ButtonContainer}>
             <Button
               onClick={showForm}
-              type="Secondary"
+              kind="Secondary"
               icon={faPlus}
             />
           </div>

@@ -163,7 +163,7 @@ const WishForm: React.FC<WishFormProps> = ({ onCompleted }) => {
         </div>
         <div>
           <Button
-            type="Primary"
+            kind="Primary"
             onClick={submitFormHandler}
           >
             Submit

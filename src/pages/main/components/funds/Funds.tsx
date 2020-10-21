@@ -10,7 +10,7 @@ const Funds: React.FC = () => {
   const { currentFunds, loading } = useGetCurrentFunds();
 
   return !loading ? (
-    <Button onClick={() => { }} icon={faCoins} type="Gold">
+    <Button onClick={() => { }} icon={faCoins} kind="Gold">
       {" "}
       ${currentFunds}
     </Button>
