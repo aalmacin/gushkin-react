@@ -6,7 +6,7 @@ const click = jest.fn();
 
 describe('Button', () => {
   test('renders', () => {
-    const { getByText } = render(<Button type="Primary" onClick={click}>
+    const { getByText } = render(<Button kind="Primary" onClick={click}>
       Hello Friend
     </Button>);
 

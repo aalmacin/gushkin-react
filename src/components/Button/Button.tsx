@@ -12,15 +12,16 @@ export const BUTTON_TYPES = [
   "Icon"
 ] as const;
 
-export type ButtonType = typeof BUTTON_TYPES[number];
+export type ButtonKind = typeof BUTTON_TYPES[number];
 
 export interface ButtonProps {
   icon?: any;
   isSquare?: boolean;
-  type: ButtonType;
+  kind: ButtonKind;
+  type?: 'button' | 'reset' | 'submit';
 }
 
-const getColors = (type: ButtonType) => {
+const getColors = (kind: ButtonKind) => {
   const buttonColors = {
     Primary: {
       backgroundColor: colors.primary.shade5,
@@ -68,16 +69,16 @@ const getColors = (type: ButtonType) => {
       }
     },
     Red: {
-      backgroundColor: colors.red.tint3,
-      textColor: colors.black.base,
-      borderColor: colors.red.tint4,
+      backgroundColor: colors.red.shade1,
+      textColor: colors.white.base,
+      borderColor: colors.red.shade2,
       hover: {
-        backgroundColor: colors.red.tint4,
-        textColor: colors.red.shade9,
+        backgroundColor: colors.red.shade3,
+        textColor: colors.white.base,
       }
     },
   };
-  return buttonColors[type];
+  return buttonColors[kind];
 };
 
 const useStyle = createUseStyles({
@@ -86,24 +87,24 @@ const useStyle = createUseStyles({
     padding: "1rem 2rem",
     flex: "1",
     flexShrink: "1",
-    display: "flex",
+    display: "flex-inline",
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
     borderRadius: ({ isSquare }) => isSquare ? "0" : "2rem",
 
-    backgroundColor: ({ type }) => getColors(type).backgroundColor,
-    color: ({ type }) => getColors(type).textColor,
-    border: ({ type }) => `1px solid ${getColors(type).borderColor}`,
+    backgroundColor: ({ kind }) => getColors(kind).backgroundColor,
+    color: ({ kind }) => getColors(kind).textColor,
+    border: ({ kind }) => `1px solid ${getColors(kind).borderColor}`,
 
     "&:hover": {
-      backgroundColor: ({ type }) => getColors(type).hover.backgroundColor,
-      color: ({ type }) => getColors(type).hover.textColor,
+      backgroundColor: ({ kind }) => getColors(kind).hover.backgroundColor,
+      color: ({ kind }) => getColors(kind).hover.textColor,
     },
   },
   Icon: {
     backgroundColor: "transparent",
-    textColor: ({ type }) => getColors(type).textColor,
+    textColor: ({ kind }) => getColors(kind).textColor,
     border: "none",
 
     "&:hover": {
@@ -118,14 +119,16 @@ const useStyle = createUseStyles({
 
 const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
   icon,
-  type,
+  kind,
   isSquare,
   children,
+  type,
   ...props
 }) => {
-  const classes = useStyle({ isSquare, type });
+  const classes = useStyle({ isSquare, kind });
   return (
     <button
+      type={type}
       {...props}
       className={classes.Button}
     >
