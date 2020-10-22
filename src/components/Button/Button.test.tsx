@@ -13,6 +13,6 @@ describe('Button', () => {
     const btn = getByText('Hello Friend');
     btn.click();
 
-    expect(click.mock.calls.length).toBe(1);
+    expect(click).toHaveBeenCalledTimes(1);
   });
 });
