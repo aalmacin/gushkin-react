@@ -1,4 +1,4 @@
-import { getByLabelText, render, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
+import { screen, render, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 import React from "react";
 import CreateActivity from './CreateActivity';
 import { MockedProvider } from '@apollo/client/testing';
@@ -38,8 +38,8 @@ describe('CreateActivity', () => {
   });
 
   test('form hides on close', async () => {
-    // expect.assertions(8);
-    const { getByText, getByLabelText, queryByText } = render(<MockedCreateActivity />);
+    expect.assertions(8);
+    const { getByText } = render(<MockedCreateActivity />);
     const createActivityButton = getByText(/Create Activity/i);
     createActivityButton.click();
 
@@ -53,14 +53,11 @@ describe('CreateActivity', () => {
     expect(positive).toBeInTheDocument();
     expect(submit).toBeInTheDocument();
 
-    const closeModalBtn = getByLabelText(/Close Modal/);
-    // await waitForElementToBeRemoved(() => queryByText('Fund Amount'));
-    // await waitForElementToBeRemoved(() => queryByText('Positive'));
-    // await waitForElementToBeRemoved(() => queryByText('Submit'));
+    screen.getByLabelText(/Close Modal/).click();
 
-    closeModalBtn.click();
-    const descriptionRemoved = await waitForElementToBeRemoved(() => queryByText('Description'));
-    expect(descriptionRemoved).not.toBeInTheDocument();
-
+    expect(screen.queryByText('Description')).not.toBeInTheDocument();
+    expect(screen.queryByText('Fund Amount')).not.toBeInTheDocument();
+    expect(screen.queryByText('Positive')).not.toBeInTheDocument();
+    expect(screen.queryByText('Submit')).not.toBeInTheDocument();
   });
 });
