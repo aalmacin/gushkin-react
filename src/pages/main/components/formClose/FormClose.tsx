@@ -14,6 +14,7 @@ const FormClose: React.FC<FormCloseProps> = ({ onClose }) => {
         kind="Secondary"
         onClick={onClose}
         icon={faTimes}
+        aria-label="Close Modal"
       />
     </div>
   );
