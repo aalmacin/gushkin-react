@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta } from '@storybook/react/types-6-0';
 import CreateActivity from './CreateActivity';
+import { MockedProvider } from '@apollo/client/testing';
 
 
 export default {
@@ -8,4 +9,4 @@ export default {
   component: CreateActivity,
 } as Meta;
 
-export const Default = () => <CreateActivity />;
+export const Default = () => <MockedProvider><CreateActivity /></MockedProvider>;
