@@ -5,7 +5,7 @@ import { MockedProvider } from '@apollo/client/testing';
 
 
 export default {
-  title: "pages/main/activities/Create Activity",
+  title: "pages/main/activities/Activity Nav/Create Activity",
   component: CreateActivity,
 } as Meta;
 

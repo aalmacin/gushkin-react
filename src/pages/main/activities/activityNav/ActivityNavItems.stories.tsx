@@ -7,7 +7,7 @@ import { Router } from "react-router-dom";
 const history = createMemoryHistory();
 
 export default {
-  title: "pages/main/activities/Activity Nav Items",
+  title: "pages/main/activities/Activity Nav/Activity Nav Items",
   component: ActivityNavItems,
 } as Meta;
 
