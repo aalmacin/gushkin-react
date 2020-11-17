@@ -19,10 +19,10 @@ const useStyles = createUseStyles({
 
 type AddActivityFunc = (a: string) => () => void;
 
-interface ActivityListProps {
+export type ActivityListProps = {
   activities: ActivityItem[];
   addActivity: AddActivityFunc;
-}
+};
 
 const ActivityList: React.FC<ActivityListProps> = ({ activities, addActivity }) => {
   const classes = useStyles();
