@@ -16,15 +16,17 @@ const useStyles = createUseStyles({
   }
 });
 
-type FundBarProps = {
+export type FundBarProps = {
   todaysFundChanges: number,
   currentFunds: number;
 };
 
-export const FundBar: React.FC<FundBarProps> = ({ todaysFundChanges, currentFunds }) => {
+const FundBar: React.FC<FundBarProps> = ({ todaysFundChanges, currentFunds }) => {
   const classes = useStyles();
   return <div className={classes.FundBar}>
     <div>Fund Changes Today: ${todaysFundChanges}</div>
     <div>Current Funds: ${currentFunds}</div>
   </div>;
 };
+
+export default FundBar;

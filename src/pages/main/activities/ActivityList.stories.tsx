@@ -15,7 +15,7 @@ export default {
   title: "pages/main/activities/Activity List",
   component: ActivityNav,
   argTypes: {
-    activities: { control: '' },
+    activities: { control: { disable: true } },
     addActivity: { action: 'Add Activity' }
   }
 } as Meta;
