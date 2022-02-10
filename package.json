@@ -64,7 +64,7 @@
     "babel-loader": "^8.1.0",
     "faker": "^5.1.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "storybook-cartesian": "^2.1.1",
     "typescript": "^4.0.3"
   }
